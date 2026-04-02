@@ -1,5 +1,4 @@
 import React from 'react'
-import CarouselComponent from './carsouel.js';
 import FairJobCarousel from './fairJobCarousel.js';
 
 const FairjobProduct = () => {

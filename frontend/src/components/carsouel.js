@@ -1,7 +1,6 @@
 import Carousel from "react-bootstrap/Carousel";
 import "../style.css";
 import landingImg from "../assets/lvc_landing.png";
-import { Margin } from "@mui/icons-material";
 // import softwareSolutions from "../assets/development.mp4";
 
 function UncontrolledExample() {

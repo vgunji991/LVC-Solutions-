@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { createRef, useState, useRef, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom"; //Added Link import for the contact us / talk with us buttons
 import "../style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -15,18 +15,21 @@ import SalesLogo from "../assets/salesforce.png";
 const AboutUs = () => {
   const [inView, setInView] = useState(false);
 
-  const myRef = useRef()
-  const chipsRef = useRef([])
-  const tabRefs = {
-    header : useRef(null),
-    pills : useRef(null),
-    image1 : useRef(null),
-    text1 : useRef(null),
-    image2 : useRef(null),
-    text2 : useRef(null),
-    image3 : useRef(null),
-    text3 : useRef(null),
-  }
+  const myRef = useRef();
+  const chipsRef = useRef([]);
+  const tabRefs = useMemo(
+    () => ({
+      header: createRef(),
+      pills: createRef(),
+      image1: createRef(),
+      text1: createRef(),
+      image2: createRef(),
+      text2: createRef(),
+      image3: createRef(),
+      text3: createRef(),
+    }),
+    []
+  );
 
 
   // Function to generate a random color
@@ -51,13 +54,15 @@ const AboutUs = () => {
       { threshold: 0.5 }
     );
 
-    if (myRef.current) {
-      observer.observe(myRef.current);
+    const currentRef = myRef.current;
+
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (myRef.current) {
-        observer.unobserve(myRef.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, []);
@@ -82,7 +87,7 @@ const AboutUs = () => {
     }
 
     return () => observer2.disconnect();
-  }, []);
+  }, [tabRefs]);
 
   // Companies for animation
   const companies = [
