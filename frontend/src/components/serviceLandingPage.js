@@ -3,7 +3,7 @@ import Industries from "./industriesWeServe.js";
 
 const ServiceLandingPage = () => {
 
-  const [showAllServices, setShowAllServices] = useState(false);
+  const [showAllServices] = useState(false);
 
   const images = [
     { src: "https://images.pexels.com/photos/34577/pexels-photo.jpg", alt: "E-commerce Development", title: "E-commerce Development" },

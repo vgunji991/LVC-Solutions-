@@ -2,14 +2,8 @@ import CarouselComponent from "./carsouel.js";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style.css";
 import TransformationStartsHere from "./transformationStartsHere.js";
-import WithYouForLong from "./withYouForLong.js";
 import ServiceLandingPage from "./serviceLandingPage.js";
 import Footer from "./footer.js";
-import SpotLogo from "../assets/spotlight-media.png";
-import FairJobCarousel from "./fairJobCarousel.js";
-import SpotLightCarousel from "./spotlightCarousel.js";
-import AcademyCarousel from "./academyCarousel.js";
-import lvc360logo from "../assets/lvc360logo.png";
 
 const Home = () => {
   return (
