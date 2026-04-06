@@ -64,7 +64,7 @@ const Home = () => {
             <div className="services-content">
                 <p className="services-subtitle">IT Services</p>
                 <hr className="underline" />
-                <h1 className="services-title">Our Services</h1>
+                <h1 className="services-title" style={{fontSize:"48px"}} >Our Services</h1>
                 <p className="mb-4" style={{ color: "#f1f1f1"}}>
                     We are offering services across industries! Check below to see what services we offer!
                 </p>
