@@ -5,13 +5,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { motion } from "framer-motion";
 import TransformationStartsHere from "./transformationStartsHere.js";
 import Footer from "./footer.js";
-import FounderImage from "../assets/founder.jpg";
+import FounderImage from "../assets/founder1.jpeg";
 import MicrosoftLogo from "../assets/microsoft.png";
 import OracleLogo from "../assets/oracle.png";
 import GoogleLogo from "../assets/google.png";
 import AwsLogo from "../assets/aws.png";
 import SalesLogo from "../assets/salesforce.png";
-
+import Companies from "./companies.js";
+ 
 const AboutUs = () => {
   const [inView, setInView] = useState(false);
 
@@ -114,13 +115,13 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="section-aboutus">
+    <div className="section-aboutus bg-black">
       <div className="About-section-herobanner">
         <div className="whatwedo-container">
           <div className="whatwedo-content">
             <p className="whatwedo-subtitle">About Us</p>
             <hr className="underline" />
-            <h1 className="whatwedo-title">
+            <h1 className="whatwedo-title" style={{fontSize:"45px"}}>
               {" "}
               Driving Success Through Data, Technology, and Tailored Enterprise
               Solutions
@@ -132,7 +133,7 @@ const AboutUs = () => {
         </div>
       </div>
       <div className="section2aboutus">
-        <p className="section2-aboutus">
+        <p className="section2-aboutus bg-black text-white">
           Welcome to LVC Solutions, a dynamic and innovative software solutions
           company proudly based in the USA. As a startup with a vision to
           transform the digital landscape, we specialize in combining the power
@@ -171,12 +172,12 @@ const AboutUs = () => {
         </div>
       </div>
 
-      <div className="tab-section">
-        <h1 ref={tabRefs.header} className="header-section">Why Us</h1>
+      <div className="tab-section bg-black text-white ">
+        <h1 ref={tabRefs.header} className="header-section text-white">Why Us</h1>
         <ul className="nav nav-pills mb-3 pills-section" id="pills-tab" role="tablist" ref={tabRefs.pills}>
           <li className="nav-item" role="presentation">
             <button
-              className="nav-link active  nav-btn-tab"
+              className="nav-link active  nav-btn-tab text-white"
               id="pills-home-tab"
               data-bs-toggle="pill"
               data-bs-target="#pills-home"
@@ -184,13 +185,14 @@ const AboutUs = () => {
               role="tab"
               aria-controls="pills-home"
               aria-selected="true"
+
             >
               Our Mission
             </button>
           </li>
           <li className="nav-item" role="presentation">
             <button
-              className="nav-link nav-btn-tab"
+              className="nav-link nav-btn-tab text-white"
               id="pills-profile-tab"
               data-bs-toggle="pill"
               data-bs-target="#pills-profile"
@@ -204,7 +206,7 @@ const AboutUs = () => {
           </li>
           <li className="nav-item" role="presentation">
             <button
-              className="nav-link nav-btn-tab"
+              className="nav-link nav-btn-tab text-white"
               id="pills-contact-tab"
               data-bs-toggle="pill"
               data-bs-target="#pills-contact"
@@ -233,8 +235,8 @@ const AboutUs = () => {
                 />
               </div>
               <div className="tab-paragraph-width text-section" ref={tabRefs.text1}>
-                <h1>Our Mission</h1>
-                <p className="tab-paragraph">
+                <h1 className="text-white">Our Mission</h1>
+                <p className="tab-paragraph text-white ">
                   At LVC Solutions, our mission is to empower businesses by
                   delivering innovative solutions that drive growth, streamline
                   operations, and inspire transformation. We are dedicated to
@@ -264,8 +266,8 @@ const AboutUs = () => {
                 />
               </div>
               <div className="tab-paragraph-width text-section" ref={tabRefs.text2}>
-                <h1>Our Vision</h1>
-                <p className="tab-paragraph">
+                <h1 className="text-white">Our Vision</h1>
+                <p className="tab-paragraph text-white">
                   At LVC Solutions, our vision is to be a trusted partner for
                   businesses, delivering transformative solutions that empower
                   them to innovate, grow, and thrive in a rapidly evolving
@@ -296,8 +298,8 @@ const AboutUs = () => {
                 />
               </div>
               <div className="tab-paragraph-width text-section" ref={tabRefs.text3}>
-                <h1>Innovators at Heart</h1>
-                <p className="tab-paragraph">
+                <h1 className="text-white">Innovators at Heart</h1>
+                <p className="tab-paragraph text-white">
                   We are a dynamic team of tech enthusiasts and innovators who
                   thrive on challenges. Our diverse expertise spans across
                   modern technologies like AI, cloud computing, and digital
@@ -311,7 +313,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-      <div
+      {/* <div
         className="about-cta"
         ref={myRef}
         style={{
@@ -330,7 +332,7 @@ const AboutUs = () => {
           <h1 className="insight-motion-profile">Trusted by 100+ companies</h1>
         </motion.div>
 
-        {/*  Companies with Logos */}
+     
         <div
           ref={chipsRef}
           style={{
@@ -368,7 +370,8 @@ const AboutUs = () => {
             </motion.div>
           ))}
         </div>
-      </div>
+      </div> */}
+      <Companies/>
 
       <TransformationStartsHere/>
 

@@ -1219,7 +1219,9 @@ p {
 }
 
 .tab-paragraph-width {
-  padding: 0 1rem;
+  width: 100%;
+  max-width: 850px;
+  margin: 0 auto;
 }
 
 @media (max-width: 1024px) {
@@ -1245,6 +1247,7 @@ p {
   line-height: 1.6;
   color: black;
   font-weight: 500;
+  text-align: justify;
 }
 
 /* */
@@ -1270,7 +1273,9 @@ p {
 .swiper-image {
   height: 550px;
 }
-
+.view-more-btn{
+  width: 50%;
+}
 .overlay-text-insight {
   position: absolute;
   top: 250px;
@@ -1307,6 +1312,17 @@ p {
   margin-bottom: 25px;
   background-color: white;
   padding: 50px !important;
+  --swiper-navigation-color: #fff;
+}
+
+.mySwiper .swiper-button-next,
+.mySwiper .swiper-button-prev {
+  color: #fff !important;
+}
+
+.mySwiper .swiper-button-next::after,
+.mySwiper .swiper-button-prev::after {
+  color: #fff !important;
 }
 
 .isight-wrapper {
@@ -1380,11 +1396,19 @@ p {
 }
 
 .pt-customer-review {
-  background-color: #faf9f6;
+  background-color: #000;
   text-align: center;
   padding: 100px;
   border-radius: 25px;
+  border: 1px solid #fff;
+  color: #fff;
   /* width: 500px !important; */
+}
+
+.pt-customer-review-description,
+.pt-customer-review-caption,
+.pt-customer-review-caption strong {
+  color: #fff;
 }
 
 .about-cta {
@@ -1445,7 +1469,7 @@ p {
 .contact-form {
   flex: 1;
   padding: 3rem;
-  background-color: white;
+  box-sizing: border-box;
 }
 
 .contact-title {
@@ -2972,6 +2996,7 @@ p.paragraph-clamp {
 
 .spotlight-carousel-services {
   display: flex;
+  justify-content: center;
   max-height: 80%;
   margin-bottom: 20px;
   padding-top: clamp(0rem, 1vmax, 2rem);
@@ -2982,11 +3007,24 @@ p.paragraph-clamp {
   height: 40%;
   color: white;
   margin-bottom: 1.7vmax;
+  text-align: center;
 }
 
 .spotlight-slide2-container {
-  width: 50%;
+  width: 100%;
+  max-width: 720px;
   height: 65%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 1.5rem;
+  margin: 0 auto;
+}
+
+.spotlight-slide2-cards h3,
+.spotlight-slide2-cards p {
+  text-align: center;
 }
 
 .spotlight-slide2-bulletpoints {
@@ -3013,11 +3051,13 @@ p.paragraph-clamp {
   .spotlight-carousel-services {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   .spotlight-slide2-container {
     width: 100%;
     height: 65%;
+    gap: 1rem;
   }
 }
 
@@ -3033,6 +3073,16 @@ p.paragraph-clamp {
 .ul-list-padding-carousel {
   padding-top: 11vh;
   margin-top: 3vh;
+  width: fit-content;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.ul-list-padding-carousel p {
+  margin-bottom: 0.75rem;
+  text-align: left;
 }
 
 @media (max-width: 1065px) {
