@@ -86,7 +86,7 @@ const AboutUs = () => {
           <div className="whatwedo-content">
             <p className="whatwedo-subtitle">About Us</p>
             <hr className="underline" />
-            <h1 className="whatwedo-title" style={{fontSize:"45px"}}>
+            <h1 className="whatwedo-title aboutus-mobile-hero-title" style={{fontSize:"45px"}}>
               {" "}
               Driving Success Through Data, Technology, and Tailored Enterprise
               Solutions
