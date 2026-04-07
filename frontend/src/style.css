@@ -2385,6 +2385,12 @@ p {
     /* Change to scroll on mobile */
     background-position: center center;
   }
+
+  .aboutus-mobile-hero-title {
+    font-size: 1.6rem !important;
+    margin-top: 18px;
+    line-height: 1.35;
+  }
 }
 
 
