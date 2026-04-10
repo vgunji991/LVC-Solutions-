@@ -12,6 +12,14 @@ function UncontrolledExample() {
       marginBottom: "-2px",
       marginTop: "100px",
     },
+    image:{
+       width:"100%",
+       height: window.innerWidth <= 768 ? "80vh" : "100vh",
+       objectFit: "cover",
+       position: "absolute",
+       top: 0,
+       left: 0,
+    },
     videoWrapper: {
       height: window.innerWidth <= 768 ? "80vh" : "100vh",
       width: "100%",
@@ -63,7 +71,7 @@ function UncontrolledExample() {
 
         <Carousel.Item>
           <div style={styles.videoWrapper}>
-            <img src={landingImg} style={styles.video} alt="Landing" />
+            <img src={landingImg} style={styles.image} alt="Landing" />
             {/* <img src="../assets/lvc_landing.png" /> */}
             <div style={styles.caption} className="carousel-caption-style">
               <h1>Software Solutions.</h1>
