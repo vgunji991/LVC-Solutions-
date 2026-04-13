@@ -311,8 +311,8 @@ const FullTimeRoles = () => {
         return (
             <>
             <div style={{ marginTop: "30px", padding: "0 40px 20px 40px" }}>
-            <h1 style={{ color: "white" }}>Open Roles</h1>
-            <div className="d-flex gap-4 flex-wrap justify-content-center">
+            <h1 className="role-heading" style={{ color: "white" }}>Open Roles</h1>
+            <div className="d-flex gap-4 flex-wrap justify-content-center ">
                 {internshipData.map((item) => (
                 <InternshipCard
                     key={item.id}

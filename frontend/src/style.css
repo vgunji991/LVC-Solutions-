@@ -1196,7 +1196,7 @@ font-size: 1.75rem !important;
     /* Add spacing between image and text */
   }
   .tab-section h1{
-    font-size: 1.75rem !important;
+    font-size: 1.3rem !important;
   }
 
   .grid-item-services img {
@@ -1323,6 +1323,9 @@ font-size: 1.75rem !important;
   .section2aboutus p {
     padding: 25px;
     font-size: 0.9rem;
+  }
+  .tab-paragraph{
+    font-size: 0.9rem !important;
   }
 }
 
@@ -2079,7 +2082,7 @@ font-size: 1.75rem !important;
 
   .nav-pills .nav-link {
     margin-left: 4px;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
   }
 
   .whatwedo-title {
@@ -2359,6 +2362,11 @@ font-size: 1.75rem !important;
    .section-header h1{
     font-size: 1.3rem !important;
    }
+   .role-heading{
+    font-size: 1.3rem;
+    font-weight: bold;
+   }
+  
    .card-content{
     height: 80% !important;
    }
@@ -2372,11 +2380,15 @@ font-size: 1.75rem !important;
     font-size: 0.9rem !important;
   }
   .difference-card {
-height: auto !important;
+  height: auto !important;
   }
   .comp-project{
     margin-top: -80px;
   }
+  .careers-title{
+   font-size: 1.3rem !important;
+  }
+
 }
 
 .founder-header {
