@@ -467,6 +467,18 @@ p {
   font-size: 16px;
 }
 
+.services-offer-section {
+  margin: 0 auto;
+}
+
+.services-offer-text {
+  padding-right: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.services-offer-image {
+  padding-left: clamp(0.75rem, 2vw, 1.5rem);
+}
+
 .section-4-heading {
   font-size: 32px !important;
   margin-bottom: 100px;
@@ -478,6 +490,27 @@ p {
 .fade-out.text-section {
   opacity: 1;
   transform: translateY(25);
+}
+
+@media (max-width: 767.98px) {
+  .services-offer-section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .services-offer-section .row {
+    text-align: center;
+  }
+
+  .services-offer-section .text-section,
+  .services-offer-section .image-section {
+    padding-left: calc(var(--bs-gutter-x) * 0.5) !important;
+    padding-right: calc(var(--bs-gutter-x) * 0.5) !important;
+  }
+
+  .services-offer-image img {
+    margin: 0 auto;
+  }
 }
 
 .custom-carousel-image {
@@ -2209,6 +2242,36 @@ font-size: 1.75rem !important;
     height: 50vh;
     margin-top: 90px ;
   }
+   .services-title {
+    font-size: 1.3rem;
+   }
+   .service-title-desc{
+    font-size: 0.9rem;
+   }
+   .btn-primary-whatwedo{
+     font-size: 0.9rem;
+     width: 10rem;
+     font-weight: bold;
+   }
+   .grid-item-services.text h2{
+    font-size: 1.3rem;
+   }
+   .grid-item-services.text p{
+    font-size: 0.9rem;
+   }
+   .header-1-clamp{
+    font-size: 1.3rem;
+   }
+   h3.header-2-clamp{
+    font-size: 1.2rem !important;
+
+   }
+   .paragraph-clamp{
+     font-size: 0.9rem !important;
+   }
+   .text-section-heading{
+    font-size: 1.3rem;
+   }
 }
 
 .founder-header {
