@@ -207,7 +207,11 @@ footer .logo {
   text-align: center;
 }
 
-
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: #ffffff !important; /* or whatever dark color fits your navbar */
+  color: rgb(0, 0, 0) !important;
+}
 
 @keyframes slide-in {
   from {
@@ -2800,7 +2804,7 @@ p {
   justify-content: center;
   border-radius: 50%;
   background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(225, 225, 225, 0.3);
+  border: 1px solid rgb(225, 225, 225);
   margin: 0 8px;
   padding: 0;
   box-sizing: border-box;
@@ -2814,7 +2818,7 @@ p {
 
 .social-media-container-footer a:has(.twitter-media-imgs) {
   background: transparent;
-  border: 1px solid rgba(225, 225, 225, 0.3);
+  border: 1px solid rgb(225, 225, 225);
   border-radius: 50%;
 }
 
@@ -2836,20 +2840,20 @@ p {
 } */
 
 .twitter-media-imgs {
-  width: 22px;
-  height: 22px;
+  width: 32px;
+  height: 32px;
 }
 
 .instagram-media-imgs {
   filter: invert(100%);
-  height: 22px;
-  width: 22px;
+  height: 32px;
+  width: 32px;
 }
 
 .linkedIn-media-imgs {
   filter: invert(100%);
-  height: 22px;
-  width: 22px;
+  height: 32px;
+  width: 32px;
 }
 
 /* Font Clamping (Dynamically adjust size based on viewport) */
@@ -3387,6 +3391,7 @@ main.page-home > div:first-of-type::after {
   height: 1px;
   background: #fff;
   opacity: 0.7;
+  content: none !important;
 }
 
 main.page-home > div + div {
