@@ -2277,6 +2277,33 @@ font-size: 1.75rem !important;
    .text-section-heading{
     font-size: 1.3rem;
    }
+   .projects-title{
+    font-size: 1.3rem !important;
+   }
+   .project-desc{
+    font-size: 0.9rem;
+   }
+   .section-header h1{
+    font-size: 1.3rem !important;
+   }
+   .card-content{
+    height: 80% !important;
+   }
+  .card-content h3{
+    font-size: 1.2rem !important;
+   }
+   .card-content p{
+    font-size: 0.9rem !important;
+   }
+   .learn-more{
+    font-size: 0.9rem !important;
+  }
+  .difference-card {
+height: auto !important;
+  }
+  .comp-project{
+    margin-top: -80px;
+  }
 }
 
 .founder-header {
@@ -2378,7 +2405,7 @@ font-size: 1.75rem !important;
 /* LVC Difference Section */
 .lvc-difference-section {
   background-color: #000000;
-  padding: 6rem 2rem;
+  padding: 2rem 2rem;
   margin: 0;
   overflow-x: hidden;
 }
@@ -2405,6 +2432,7 @@ font-size: 1.75rem !important;
   padding: 2rem;
   max-width: 100%;
   overflow: auto;
+  --swiper-navigation-color: #ffffff;
 }
 
 .swiper-slide {
@@ -2473,8 +2501,8 @@ font-size: 1.75rem !important;
 }
 
 /* Swiper Navigation Buttons */
-.swiper-button-next,
-.swiper-button-prev {
+.difference-cards-swiper .swiper-button-next,
+.difference-cards-swiper .swiper-button-prev {
   color: #ffffff;
   width: 50px;
   height: 50px;
@@ -2482,8 +2510,9 @@ font-size: 1.75rem !important;
   transition: all 0.3s ease;
 }
 
-.swiper-button-next:after,
-.swiper-button-prev:after {
+.difference-cards-swiper .swiper-button-next:after,
+.difference-cards-swiper .swiper-button-prev:after {
+  color: #ffffff;
   font-size: 1.5rem;
 }
 
@@ -2527,10 +2556,6 @@ font-size: 1.75rem !important;
 }
 
 @media (min-width: 426px) and (max-width: 768px) {
-  .lvc-difference-section {
-    padding: 4rem 1rem;
-  }
-
   .section-header h1 {
     font-size: 2.5rem;
   }
@@ -2555,8 +2580,8 @@ font-size: 1.75rem !important;
     font-size: 1rem;
   }
 
-  .swiper-button-next,
-  .swiper-button-prev {
+  .difference-cards-swiper .swiper-button-next,
+  .difference-cards-swiper .swiper-button-prev {
     width: 40px;
     height: 40px;
   }
@@ -2569,6 +2594,7 @@ font-size: 1.75rem !important;
 
   .card-image {
     height: 300px;
+    margin-top: 30px;
   }
 }
 
