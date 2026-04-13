@@ -1863,11 +1863,11 @@ font-size: 1.75rem !important;
     flex-direction: column;
     overflow: visible;
   }
-     .navbar-toggler{
-      width: 0;
-      margin-right:12px;
-      background-color: black;
-     }
+  .navbar-toggler {
+    width: auto;
+    margin-right: 12px;
+    background-color: black;
+  }
   .contact-form,
   .contact-info {
     flex: none;
@@ -1939,6 +1939,12 @@ font-size: 1.75rem !important;
   .contact-icon {
     min-width: 20px;
     margin-top: 0.2rem;
+  }
+  .product-title{
+    font-size: 1.3rem;
+  }
+  .product-text{
+    font-size: 1.2rem;
   }
 }
 
@@ -2315,14 +2321,24 @@ font-size: 1.75rem !important;
      width: 10rem;
      font-weight: bold;
    }
+   .btn-lg{
+    font-size: 0.9rem;
+    width: 11rem;
+    font-weight: bold;
+    padding: 5px;
+   }
+   .text-list{
+    text-align: left;
+   }
+  
    .grid-item-services.text h2{
     font-size: 1.3rem;
    }
-   .grid-item-services.text p{
+   .grid-item-services.text p,.paragraph-clamp li{
     font-size: 0.9rem;
    }
-   .header-1-clamp{
-    font-size: 1.3rem;
+   .header-1-clamp,.card-titles{
+    font-size: 1.2rem !important;
    }
    h3.header-2-clamp{
     font-size: 1.2rem !important;
@@ -3314,6 +3330,77 @@ p.paragraph-clamp {
   font-size: clamp(12px, 1.5vmax, 44px);
 }
 
+.product-page-shell {
+  padding-inline: clamp(16px, 3vw, 24px) !important;
+}
+
+.products-page {
+  overflow-x: hidden;
+}
+
+.product-hero-section {
+  padding-top: clamp(0.5rem, 2vw, 1rem);
+  padding-bottom: clamp(1rem, 3vw, 2rem);
+}
+
+.product-hero-title {
+  margin: 0 auto;
+  max-width: 22ch;
+  text-align: center;
+  line-height: 1.15;
+}
+
+.product-hero-subtitle {
+  display: inline-block;
+  margin-top: 0.35rem;
+  line-height: 1.2;
+}
+
+.product-section-heading {
+  margin-inline: auto;
+}
+
+.product-section-logo {
+  justify-items: center;
+}
+
+.spotlight-section-logo {
+  width: min(100%, 300px);
+}
+
+.product-section-footer {
+  padding: 0 1rem 1rem;
+}
+
+.product-section-footnote {
+  margin: 0 auto;
+  max-width: 32ch;
+  line-height: 1.4;
+}
+
+.product-academy-section {
+  padding-inline: clamp(16px, 3vw, 24px);
+}
+
+.product-academy-title {
+  line-height: 1.15;
+}
+
+.product-academy-subtitle {
+  display: inline-block;
+  margin-top: 0.25rem;
+  line-height: 1.2;
+}
+
+.product-academy-cta {
+  padding-inline: 0;
+}
+
+.product-academy-cta-title {
+  color: #fff;
+  line-height: 1.3;
+}
+
 /* Fair Job Portal section */
 .fairjob-carousel-items-container {
   overflow: auto;
@@ -3802,6 +3889,246 @@ p.paragraph-clamp {
   }
    .btn-career-apply {
     margin-top: -30px;
+  }
+  .academy-heading-row{
+    font-size: 1.3rem;
+    color: red;
+  }
+}
+
+@media (max-width: 991px) {
+  .fairjob-product-carousel .carousel-item,
+  .product-academy-carousel .carousel-item {
+    padding-bottom: 3rem;
+  }
+
+  .fairjob-carousel-items-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    height: auto;
+    min-height: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .fairjob-hero-row {
+    padding-top: 2rem !important;
+    margin-bottom: 0 !important;
+    row-gap: 1.5rem;
+  }
+
+  .fairjob-feature-grid {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-top: 1.5rem !important;
+  }
+
+  .fairjob-slide-why,
+  .fairjob-slide-cta {
+    padding-top: 1.5rem !important;
+  }
+
+  .fairjob-why-section,
+  .fairjob-comparison-section,
+  .fairjob-cta-section {
+    padding-inline: 0.5rem;
+  }
+
+  .fairjob-why-section ul {
+    padding-left: 1.25rem;
+  }
+
+  .fairjob-cta-section {
+    text-align: center;
+    padding-top: 0.5rem;
+  }
+
+  .fairjob-comparison-section {
+    overflow-x: auto;
+  }
+
+  .fairjob-comparison-section .spotlight-slide2-grid {
+    min-width: 820px;
+  }
+
+  .spotlight-carousel-container {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+  }
+
+  .spotlight-carousel-container .carousel-item {
+    min-height: 0;
+    height: auto;
+    padding-bottom: 3rem;
+  }
+
+  .product-spotlight-carousel .carousel-caption.spotlight-carousel-items-container {
+    position: static;
+    right: auto;
+    left: auto;
+    bottom: auto;
+    width: 100%;
+    transform: none;
+    padding: 1.25rem 1rem 0;
+    height: auto;
+    min-height: 0;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .spotlight-carousel-bg {
+    display: none;
+  }
+
+  .spotlight-slide2-container {
+    max-width: none;
+  }
+
+  .ul-list-padding-carousel {
+    width: 100%;
+    margin-top: 0;
+    padding-top: 1rem;
+  }
+
+  .table-isolation-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table-isolation-wrapper .spotlight-slide2-grid {
+    min-width: 680px;
+  }
+
+  .academy-slide {
+    padding: 1.5rem 1rem !important;
+  }
+
+  .academy-slide-split {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .academy-card-grid-three,
+  .academy-card-grid-two {
+    grid-template-columns: 1fr !important;
+    margin-top: 1.5rem !important;
+  }
+
+  .academy-info-card {
+    padding: 1rem !important;
+  }
+
+  .product-academy-cta .p-5 {
+    padding: 1.5rem 1rem !important;
+  }
+
+  .product-academy-carousel .carousel-item > * {
+    max-width: 100%;
+    padding-inline: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-page-shell {
+    padding: 16px !important;
+    margin-top: 72px !important;
+  }
+
+  .product-hero-title {
+    max-width: 18ch;
+  }
+  .lvc-heading{
+  font-size: 1.3rem!important;
+  }
+  .heading-title{
+    font-size: 1.2rem !important;
+  }
+  .fair-text{
+    font-size: 0.9rem;
+  }
+.fair-button{
+  background: white;
+  color: black;
+  border: white;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+  .product-hero-subtitle {
+    display: block;
+  }
+  .academy-info-card{
+    font-size: 0.9rem !important;
+  }
+
+  .spotlight-heading-row {
+    grid-template-columns: 1fr;
+    row-gap: 0.75rem;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .spotlight-section-logo {
+    max-width: 220px !important;
+  }
+
+  .product-section-footnote {
+    font-size: 0.95rem !important;
+  }
+
+  #fairjob-img {
+    width: min(70vw, 260px);
+  }
+
+  #fairjob-btn {
+    width: 11rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+   }
+
+  #fairjob-list {
+    max-width: none;
+    font-size: 1rem;
+  }
+
+  .spotlight-slide2-cards h3 {
+    font-size: 1.2rem;
+  }
+
+  .spotlight-slide2-cards p,
+  .ul-list-padding-carousel p {
+    font-size: 0.95rem;
+  }
+
+  .academy-carousel .carousel-item > * {
+    padding-inline: 1.25rem;
+  }
+
+  .product-academy-cta-title {
+    font-size: 1.2rem;
+  }
+  .product-academy-title{
+    font-size: 1.3rem !important;
+  }
+  .product-academy-subtitle{
+   font-size: 1.2rem !important;
+  }
+  .academy-heading{
+    font-size: 1.2rem !important;
+  }
+  .heading-below-text{
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .product-section-footnote {
+    max-width: 24ch;
+  }
+
+  .fairjob-comparison-section .spotlight-slide2-grid,
+  .table-isolation-wrapper .spotlight-slide2-grid {
+    min-width: 620px;
   }
 }
 
