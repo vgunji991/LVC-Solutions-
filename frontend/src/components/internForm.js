@@ -49,23 +49,22 @@ const InternForm = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-
+    const alphabetFields = ["fullName", "institution", "city", "state", "country", "degree", "branch"];
+    const numericFields = ["graduationYear", "pinCode"];
+    let finalValue = type === "checkbox" ? checked : value;
+    if (alphabetFields.includes(name) && type !== "checkbox") {
+      finalValue = value.replace(/[^a-zA-Z\s]/g, ""); 
+    }
+    if (numericFields.includes(name)) {
+      finalValue = value.replace(/[^0-9]/g, ""); 
+    }
+    if (name === "percentage") {
+    finalValue = value.replace(/[^0-9.]/g, "");
+    if ((finalValue.match(/\./g) || []).length > 1) return; 
+  }
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-
-    setFormData((prev) => ({
-      ...prev,
-      resume: file,
-    }));
-
-    setErrors((prev) => ({
-      ...prev,
-      resume: "",
+      [name]: finalValue,
     }));
   };
   const validateStep = () => {
@@ -74,7 +73,11 @@ const InternForm = () => {
     if (step === 1) {
       if (!formData.fullName) newErrors.fullName = "Full Name is required";
       if (!formData.phone) newErrors.phone = "Phone is required";
-      if (!formData.email) newErrors.email = "Email is required";
+      if (!formData.email) {
+          newErrors.email = "Email is required";
+        } else if (!formData.email.toLowerCase().endsWith("@gmail.com")) {
+          newErrors.email = "Only Gmail addresses (@gmail.com) are accepted";
+        }
     }
 
     if (step === 2) {
@@ -178,7 +181,7 @@ const InternForm = () => {
           ></div>
         </div>
 
-        <h2 style={{ color: "#d4af37" }}>
+        <h2 style={{ color: "#ffffff" }}>
           {step === 1 && "Personal Information"}
           {step === 2 && "Education Information"}
           {step === 3 && "Address Information"}
@@ -195,6 +198,7 @@ const InternForm = () => {
                 </label>
                 <input
                   type="text"
+                  pattern="[A-Za-z]+"
                   name="fullName"
                   placeholder="Enter Your Full Name"
                   value={formData.fullName}
@@ -208,11 +212,12 @@ const InternForm = () => {
                 Phone Number <span className="required">*</span>
               </label>
               <input
-                type="tel"
+                type="number"
                 name="phone"
                 placeholder="Enter Your Phone Number"
                 value={formData.phone}
                 onChange={handleChange}
+                className="no-spinner"
                 required
               />
               {errors.phone && <p className="error">{errors.phone}</p>}
@@ -268,14 +273,12 @@ const InternForm = () => {
                 Year of Graduation <span className="required">*</span>
               </label>
               <input
-                type="number"
+                type="text"
                 name="graduationYear"
                 placeholder="Enter Year of Graduation"
                 value={formData.graduationYear}
                 onChange={handleChange}
                 required
-                min = "0"
-                className="no-spinner"
               />
               {errors.graduationYear && (
                 <p className="error">{errors.graduationYear}</p>
@@ -297,13 +300,12 @@ const InternForm = () => {
                 Percentage / CGPA <span className="required">*</span>
               </label>
               <input
-                type="number"
+                type="text"
                 name="percentage"
-                placeholder="Enter Your Percentage / CGPA "
+                placeholder="Enter Your Percentage / CGPA"
                 value={formData.percentage}
                 onChange={handleChange}
                 required
-                className="no-spinner"
               />
               {errors.percentage && (
                 <p className="error">{errors.percentage}</p>
@@ -331,13 +333,12 @@ const InternForm = () => {
               <label className="input-label">
                 Upload Resume <span className="required">*</span>
               </label>
-              <input
-                type="file"
-                name="resume"
-                accept=".pdf,.docx"
-                onChange={handleFileChange}
-                className={`input-file ${errors.resume ? "error-input" : ""}`}
-              />
+              <input 
+                type="url" 
+                name="resume" 
+                placeholder="Enter your resume link" 
+                value={formData.resume || ""} 
+                onChange={handleChange}  />
               {errors.resume && <p className="error">{errors.resume}</p>}
               <label className="input-label">
                 GitHub/Portfolio/LinkedIn Link

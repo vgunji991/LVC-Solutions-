@@ -801,7 +801,9 @@ const Careers = () => {
           </div>
         </div>
       </div> */}
-      <FullTimeRoles />
+      <div ref={openRolesRef}>
+        <FullTimeRoles />
+      </div>
       <TransformationStartsHere/>
       <Footer />
       <ApplicationForm
