@@ -66,7 +66,7 @@ const FullTimeRolesForm = () => {
     desc: "",
   });
 
-  const [resume, setResume] = useState(null);
+  const [resume, setResume] = useState("");
   const [profilePic, setProfilePic] = useState(null);
   const [skillInput, setSkillInput] = useState("");
   const [skills, setSkills] = useState([]);
@@ -78,11 +78,12 @@ const FullTimeRolesForm = () => {
   const [locations, setLocations] = useState([]);
   const [p4Err, setP4Err] = useState({});
 
-  const resumeRef = useRef(null);
+  // const resumeRef = useRef(null);
   const profileRef = useRef(null);
   const skillInputRef = useRef(null);
 
-  const barWidth = (i) => (i < step ? "100%" : "0%");
+  // const barWidth = (i) => (i < step ? "100%" : "0%");
+  // const barWidth = (i) => (i <= step - 1 ? "100%" : "0%");
 
   function goNext() {
     if (step === 1 && !validateStep1()) return;
@@ -111,10 +112,24 @@ const FullTimeRolesForm = () => {
     required.forEach((k) => {
       if (!p1[k].trim()) errs[k] = "Required";
     });
+    const emailValue = p1.email.toLowerCase();
+    if (emailValue && !emailValue.endsWith("@gmail.com")) {
+      errs.email = "Must be a valid @gmail.com address";
+    }
     setP1Err(errs);
     return Object.keys(errs).length === 0;
   }
 
+  function handleResume(e) {
+  // Use e.target.value for text/URL inputs
+  const link = e.target.value; 
+  setResume(link);
+  
+  // Clear error message if user has typed something
+  if (link.trim()) {
+    setP4Err((prev) => ({ ...prev, resume: undefined }));
+  }
+}
   function validateStep4() {
     const errs = {};
     if (!resume) errs.resume = "Please upload your resume";
@@ -187,17 +202,10 @@ const FullTimeRolesForm = () => {
       setLocInput("");
     }
   }
-
+  const filterAlphabets = (val) => val.replace(/[^a-zA-Z\s]/g, "");
+  const filterNumbers = (val) => val.replace(/\D/g, "");
   function removeLocation(l) {
     setLocations((prev) => prev.filter((x) => x !== l));
-  }
-
-  function handleResume(e) {
-    const f = e.target.files[0];
-    if (f) {
-      setResume(f);
-      setP4Err((prev) => ({ ...prev, resume: undefined }));
-    }
   }
 
   function handleProfile(e) {
@@ -207,12 +215,21 @@ const FullTimeRolesForm = () => {
 
   return (
     <div className="msf-wrap">
+     <div style={{ width: "100%", maxWidth: "540px" }}> 
       <div className="msf-card">
         {step <= TOTAL && (
           <div className="msf-progress">
             {[0, 1, 2, 3].map((i) => (
               <div key={i} className="msf-bar">
-                <div className="msf-bar-fill" style={{ width: barWidth(i) }} />
+                <div
+                  className="msf-bar-fill"
+                  style={{
+                    width: i <= step - 1 ? "100%" : "0%",
+                    height: "5px",
+                    background: "#7c3aed",
+                    display: "block",
+                  }}
+                />
               </div>
             ))}
             <span className="msf-step-label">Step {step} of {TOTAL}</span>
@@ -221,7 +238,7 @@ const FullTimeRolesForm = () => {
 
         {step === 1 && (
           <>
-            <div className="msf-header">
+            <div className="msf-header mt-10">
               <h1>Personal Information</h1>
             </div>
 
@@ -233,7 +250,7 @@ const FullTimeRolesForm = () => {
                   value={p1.firstName}
                   error={p1Err.firstName}
                   placeholder="First name"
-                  onChange={(e) => setP1((p) => ({ ...p, firstName: e.target.value }))}
+                  onChange={(e) => setP1((p) => ({ ...p, firstName: filterAlphabets(e.target.value) }))}
                 />
               </Field>
               <Field label="Last Name" required error={p1Err.lastName}>
@@ -241,7 +258,7 @@ const FullTimeRolesForm = () => {
                   value={p1.lastName}
                   error={p1Err.lastName}
                   placeholder="Last name"
-                  onChange={(e) => setP1((p) => ({ ...p, lastName: e.target.value }))}
+                  onChange={(e) => setP1((p) => ({ ...p, lastName: filterAlphabets(e.target.value) }))}
                 />
               </Field>
             </div>
@@ -250,7 +267,7 @@ const FullTimeRolesForm = () => {
               <Input
                 value={p1.middleName}
                 placeholder="(Optional)"
-                onChange={(e) => setP1((p) => ({ ...p, middleName: e.target.value }))}
+                onChange={(e) => setP1((p) => ({ ...p, middleName: filterAlphabets(e.target.value) }))}
               />
             </Field>
 
@@ -260,16 +277,25 @@ const FullTimeRolesForm = () => {
                 value={p1.phone}
                 error={p1Err.phone}
                 placeholder="Phone number"
-                onChange={(e) => setP1((p) => ({ ...p, phone: e.target.value }))}
+                onChange={(e) => setP1((p) => ({ ...p, phone: filterNumbers(e.target.value) }))}
               />
             </Field>
 
-            <Field label="Email Address">
+            <Field label="Email Address" required error={p1Err.email}>
               <Input
                 type="email"
                 value={p1.email}
-                placeholder="Email address"
-                onChange={(e) => setP1((p) => ({ ...p, email: e.target.value }))}
+                error={p1Err.email}
+                placeholder="yourname@gmail.com"
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setP1((p) => ({ ...p, email: val }));
+                  
+                  // Optional: Clear the error as soon as they fix the suffix
+                  if (val.toLowerCase().endsWith("@gmail.com")) {
+                    setP1Err((prev) => ({ ...prev, email: undefined }));
+                  }
+                }}
               />
             </Field>
 
@@ -279,7 +305,10 @@ const FullTimeRolesForm = () => {
                   value={p1.dob}
                   error={p1Err.dob}
                   placeholder="DD/MM/YYYY"
-                  onChange={(e) => setP1((p) => ({ ...p, dob: e.target.value }))}
+                  onChange={(e) => setP1((prev) => ({ 
+                    ...prev, 
+                    dob: filterNumbers(e.target.value) 
+                  }))}
                 />
               </Field>
               <Field label="Citizenship" required error={p1Err.citizenship}>
@@ -329,7 +358,10 @@ const FullTimeRolesForm = () => {
                   value={p1.city}
                   error={p1Err.city}
                   placeholder="City"
-                  onChange={(e) => setP1((p) => ({ ...p, city: e.target.value }))}
+                  onChange={(e) => setP1((prev) => ({ 
+                    ...prev, 
+                    city: filterAlphabets(e.target.value) 
+                  }))}
                 />
               </Field>
               <Field label="State" required error={p1Err.state}>
@@ -337,7 +369,10 @@ const FullTimeRolesForm = () => {
                   value={p1.state}
                   error={p1Err.state}
                   placeholder="State"
-                  onChange={(e) => setP1((p) => ({ ...p, state: e.target.value }))}
+                  onChange={(e) => setP1((prev) => ({ 
+                    ...prev, 
+                    state: filterAlphabets(e.target.value) 
+                  }))}
                 />
               </Field>
             </div>
@@ -386,29 +421,29 @@ const FullTimeRolesForm = () => {
                 <div className="msf-form-box-title">Add Education</div>
                 <Field label="Degree / Major">
                   <Input
-                    value={eduForm.degree}
-                    placeholder="e.g. BS Computer Science"
-                    onChange={(e) =>
-                      setEduForm((f) => ({ ...f, degree: e.target.value }))
-                    }
+                        value={eduForm.degree}
+                        placeholder="Enter your degree"
+                        onChange={(e) => setEduForm((prev) => ({ 
+                          ...prev, 
+                          degree: filterAlphabets(e.target.value) 
+                        }))}
                   />
                 </Field>
                 <Field label="University / Institution">
                   <Input
                     value={eduForm.institution}
                     placeholder="e.g. Stanford University"
-                    onChange={(e) =>
-                      setEduForm((f) => ({ ...f, institution: e.target.value }))
-                    }
+                    onChange={(e) => setEduForm((prev) => ({ 
+                      ...prev, 
+                      institution: filterAlphabets(e.target.value) 
+                    }))}
                   />
                 </Field>
                 <Field label="Graduation Year">
                   <Input
                     value={eduForm.gradYear}
                     placeholder="e.g. 2023"
-                    onChange={(e) =>
-                      setEduForm((f) => ({ ...f, gradYear: e.target.value }))
-                    }
+                    onChange={(e) => setEduForm((f) => ({ ...f, gradYear: filterNumbers(e.target.value) }))}
                   />
                 </Field>
                 <div className="msf-form-btn-row">
@@ -493,26 +528,29 @@ const FullTimeRolesForm = () => {
                   <Input
                     value={workForm.jobTitle}
                     placeholder="e.g. Software Engineer"
-                    onChange={(e) =>
-                      setWorkForm((f) => ({ ...f, jobTitle: e.target.value }))
-                    }
+                    onChange={(e) => setWorkForm((prev) => ({ 
+                      ...prev, 
+                      jobTitle: filterAlphabets(e.target.value) 
+                    }))}
                   />
                 </Field>
                 <Field label="Company">
                   <Input
                     value={workForm.company}
                     placeholder="e.g. Google"
-                    onChange={(e) =>
-                      setWorkForm((f) => ({ ...f, company: e.target.value }))
-                    }
+                    onChange={(e) => setP1((prev) => ({ 
+                      ...prev, 
+                      company: filterAlphabets(e.target.value) 
+                    }))}
                   />
                 </Field>
                 <Field label="Experience type">
                   <SelectField
                     value={workForm.expType}
-                    onChange={(e) =>
-                      setWorkForm((f) => ({ ...f, expType: e.target.value }))
-                    }
+                    onChange={(e) => setP1((prev) => ({ 
+                      ...prev, 
+                      expType: filterAlphabets(e.target.value) 
+                    }))}
                   >
                     <option value="">Select</option>
                     <option value="full-time">full-time</option>
@@ -526,7 +564,7 @@ const FullTimeRolesForm = () => {
                     value={workForm.period}
                     placeholder="e.g. 2020 - Present"
                     onChange={(e) =>
-                      setWorkForm((f) => ({ ...f, period: e.target.value }))
+                      setWorkForm((f) => ({ ...f, period: filterNumbers(e.target.value) }))
                     }
                   />
                 </Field>
@@ -589,20 +627,18 @@ const FullTimeRolesForm = () => {
             {/* Resume upload */}
             <Field label="Resume" required error={p4Err.resume}>
               <input
-                type="file"
-                accept=".pdf"
-                ref={resumeRef}
-                style={{ display: "none" }}
+                type="url"
+                placeholder="Enter your resume link"
                 onChange={handleResume}
               />
-              <button
+              {/* <button
                 type="button"
                 className={`msf-upload${resume ? " has-file" : ""}`}
                 onClick={() => resumeRef.current && resumeRef.current.click()}
               >
                 <span style={{ fontSize: 22 }}>⬆</span>
                 <span>{resume ? `✓ ${resume.name}` : "Upload Resume (PDF)"}</span>
-              </button>
+              </button>  */}
             </Field>
 
             <Field label="Profile Image" optional>
@@ -751,6 +787,7 @@ const FullTimeRolesForm = () => {
           </>
         )}
 
+      </div>
       </div>
     </div>
   );

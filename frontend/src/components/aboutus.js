@@ -86,7 +86,7 @@ const AboutUs = () => {
           <div className="whatwedo-content">
             <p className="whatwedo-subtitle">About Us</p>
             <hr className="underline" />
-            <h1 className="whatwedo-title" style={{fontSize:"45px"}}>
+            <h1 className="whatwedo-title aboutus-mobile-hero-title" style={{fontSize:"45px"}}>
               {" "}
               Driving Success Through Data, Technology, and Tailored Enterprise
               Solutions
@@ -201,7 +201,7 @@ const AboutUs = () => {
               </div>
               <div className="tab-paragraph-width text-section" ref={tabRefs.text1}>
                 <h1 className="text-white">Our Mission</h1>
-                <p className="tab-paragraph text-white ">
+                <p className="tab-paragraph text-white tab-para-text ">
                   At LVC Solutions, our mission is to empower businesses by
                   delivering innovative solutions that drive growth, streamline
                   operations, and inspire transformation. We are dedicated to

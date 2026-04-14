@@ -65,7 +65,7 @@ const Home = () => {
                 <p className="services-subtitle">IT Services</p>
                 <hr className="underline" />
                 <h1 className="services-title">Our Services</h1>
-                <p className="mb-4" style={{ color: "#f1f1f1"}}>
+                <p className="mb-4 service-title-desc" style={{ color: "#f1f1f1"}}>
                     We are offering services across industries! Check below to see what services we offer!
                 </p>
                 <Link to="/contact" className="btn btn-primary-whatwedo">
@@ -90,9 +90,9 @@ const Home = () => {
         </div>
       </section>
 
-      <div className="container-fluid py-5 section-4 bg-black" style={{ padding: "0 50px" }}>
-        <div className="row align-items-center">
-          <div className="col-md-6 text-section" ref={textRef} style={{ paddingRight: "25px" }}>
+      <div className="container py-5 section-4 bg-black services-offer-section">
+        <div className="row align-items-center justify-content-center g-4">
+          <div className="col-md-6 text-section services-offer-text" ref={textRef}>
             <h2 className="mb-4 header-1-clamp">What We Offer</h2>
             <h3 className="header-2-clamp">Design Development</h3>
             <p className="paragraph-clamp">
@@ -102,11 +102,11 @@ const Home = () => {
               dedicated to your success, with the expertise to deliver real
               results.
             </p>
-            <p style={{ fontSize: 'clamp(10px, 1.5vmax, 80px)' }}>
+            <p className="paragraph-clamp" style={{ fontSize: 'clamp(10px, 1.5vmax, 80px)' }}>
               Over the past 5 years, we’ve worked with countless clients,
               helping them achieve measurable growth and lasting impact.
             </p>
-            <p style={{ fontSize: 'clamp(10px, 1.5vmax, 80px)' }}>
+            <p className="paragraph-clamp" style={{ fontSize: 'clamp(10px, 1.5vmax, 80px)' }}>
               <strong>
                 Results, innovation, and growth are what we strive to bring to
                 every project.
@@ -114,7 +114,7 @@ const Home = () => {
             </p>
           </div>
 
-          <div className="col-md-6 image-section" ref={imageRef} style={{ paddingLeft: "25px" }}>
+          <div className="col-md-6 image-section services-offer-image" ref={imageRef}>
             <img
               className="d-block w-100 custom-carousel-image"
               src="https://images.pexels.com/photos/3184428/pexels-photo-3184428.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -126,7 +126,7 @@ const Home = () => {
 
 
       <div className="section-5 text-section " ref={textRef2}>
-        <h1 style={{ textAlign:"center", color:"white",background:"black" }}>Transform your Goals into reality</h1>
+        <h1 className='text-section-heading' style={{ textAlign:"center", color:"white",background:"black" }}>Transform your Goals into reality</h1>
       </div>
       <div className="container py-5 image-section " ref={imageRef2}>
         <div className="row bg-black">

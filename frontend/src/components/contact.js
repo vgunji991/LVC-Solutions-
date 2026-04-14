@@ -45,7 +45,9 @@ const Contact = () => {
         <div className="contact-container">
           {/* Left Side: Contact Form */}
           <div className="contact-form border border-white bg-black text-white">
-            <h2 className="contact-title text-white">Get In Touch</h2>
+            <h2 className="contact-title contact-form-title text-white">
+              Get In Touch
+            </h2>
             <form onSubmit={handleSubmit}>
               <div className="form-group text-white">
                 <input
@@ -115,10 +117,17 @@ const Contact = () => {
                 </div>
                 <div className="contact-detail">
                   <MapPin className="contact-icon" />
-                  <span>
+                  <span className="address-footer">
                     Unit No 203, 2nd Floor Suite #<br />
                     749,SBR CV Towers, Sector-l, Sy No 64,HUDA Techno Enclave,
                     Madhapur, Hyderabad - 500081
+                  </span>
+                </div>
+                <div className="contact-detail">
+                  <MapPin className="contact-icon" />
+                  <span>
+                    Unit No 203, 2nd Floor Suite # 749,SBR CV Towers, Sector-l,
+                    Sy No 64,HUDA Techno Enclave, Madhapur, Hyderabad - 500081
                   </span>
                 </div>
                 <div className="contact-detail">

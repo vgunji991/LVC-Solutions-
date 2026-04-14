@@ -429,7 +429,7 @@ const Projects = () => {
             <p className="projects-subtitle">Projects</p>
             <hr className="underline" />
             <h1 className="projects-title" style={{fontSize:"48px"}}>Our Projects</h1>
-            <p className="mb-4" style={{ color: "#f1f1f1" }}>
+            <p className="mb-4 project-desc" style={{ color: "#f1f1f1" }}>
               We are working on exciting projects that we can't wait to share
               with you. Check back soon to see our latest work!
             </p>
@@ -537,7 +537,7 @@ const Projects = () => {
       {/* Completed Projects Section */}
       <div className="lvc-difference-section">
         <div className="section-header">
-          <h1>Completed Projects</h1>
+          <h1 className="comp-project">Completed Projects</h1>
           <p className="section-subtitle">Successfully delivered solutions</p>
         </div>
 
