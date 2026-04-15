@@ -1,6 +1,5 @@
 import Carousel from "react-bootstrap/Carousel";
 import "../style.css";
-import landingImg from "../assets/lvc_landing.png";
 // import softwareSolutions from "../assets/development.mp4";
 
 function UncontrolledExample() {
@@ -68,20 +67,6 @@ function UncontrolledExample() {
           </div>
         </Carousel.Item>
 
-        <Carousel.Item>
-          <div style={styles.videoWrapper}>
-            <img src={landingImg} style={styles.image} alt="Landing" loading="lazy" />
-            {/* <img src="../assets/lvc_landing.png" /> */}
-            <div className="carousel-caption-style hero-carousel-caption">
-              <h1>Software Solutions.</h1>
-              <hr />
-              <p className="carousel-description">
-                We help teams and businesses thrive through technology.
-              </p>
-              <button className="btn-career">Read More</button>
-            </div>
-          </div>
-        </Carousel.Item>
 
         <Carousel.Item>
           <div style={styles.videoWrapper}>
