@@ -1,25 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, memo } from "react";
 import Disclaimer from "./disclaimer";
 import "../styles/internForm.css";
 
 const InternForm = () => {
   const [step, setStep] = useState(1);
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
-  const API_URI = (
-    process.env.REACT_APP_BASE_URL || "http://localhost:5001"
-  ).replace(/\/$/, "");
-  const apiUrl = `${API_URI}/api/applications/add`;
-
-  console.log(apiUrl);
+  const SCRIPT_URL = process.env.REACT_APP_INTERN_SCRIPT_URL;
+  const SCRIPT_SECRET = process.env.REACT_APP_SCRIPT_SECRET;
 
   const [formData, setFormData] = useState({
     fullName: "",
     phone: "",
     email: "",
     degree: "",
-    institution: "",
-    graduationYear: "",
+    universityName: "",
+    yearOfClass: "",
+    semester: "",
     branch: "",
     percentage: "",
     role: "",
@@ -49,23 +47,22 @@ const InternForm = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-
+    const alphabetFields = ["fullName", "city", "state", "country", "degree", "branch"];
+    const numericFields = ["pinCode"];
+    let finalValue = type === "checkbox" ? checked : value;
+    if (alphabetFields.includes(name) && type !== "checkbox") {
+      finalValue = value.replace(/[^a-zA-Z\s]/g, ""); 
+    }
+    if (numericFields.includes(name)) {
+      finalValue = value.replace(/[^0-9]/g, ""); 
+    }
+    if (name === "percentage") {
+    finalValue = value.replace(/[^0-9.]/g, "");
+    if ((finalValue.match(/\./g) || []).length > 1) return; 
+  }
     setFormData((prev) => ({
       ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
-
-    setFormData((prev) => ({
-      ...prev,
-      resume: file,
-    }));
-
-    setErrors((prev) => ({
-      ...prev,
-      resume: "",
+      [name]: finalValue,
     }));
   };
   const validateStep = () => {
@@ -74,18 +71,21 @@ const InternForm = () => {
     if (step === 1) {
       if (!formData.fullName) newErrors.fullName = "Full Name is required";
       if (!formData.phone) newErrors.phone = "Phone is required";
-      if (!formData.email) newErrors.email = "Email is required";
+      if (!formData.email) {
+          newErrors.email = "Email is required";
+        } else if (!formData.email.toLowerCase().endsWith("@gmail.com")) {
+          newErrors.email = "Only Gmail addresses (@gmail.com) are accepted";
+        }
     }
 
     if (step === 2) {
       if (!formData.degree) newErrors.degree = "Degree is required";
-      if (!formData.institution)
-        newErrors.institution = "Institution is required";
-      if (!formData.graduationYear){
-        newErrors.graduationYear = "Graduation Year is required";
-      } else if (formData.graduationYear < 2000 || formData.graduationYear > 2035) {
-        newErrors.graduationYear = "Enter a valid graduation year";
-      }
+      if (!formData.universityName)
+        newErrors.universityName = "University Name is required";
+      if (!formData.yearOfClass)
+        newErrors.yearOfClass = "Year of Class is required";
+      if (!formData.semester)
+        newErrors.semester = "Semester is required";
       if (!formData.branch) newErrors.branch = "Branch is required";
       if (!formData.percentage) newErrors.percentage = "Percentage is required";
       if (!formData.role) newErrors.role = "Internship Role is required";
@@ -118,51 +118,44 @@ const InternForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateStep()) return;
+    if (loading) return;
+    setLoading(true);
 
     try {
-      const formPayload = new FormData();
+      const payload = {
+        secret: SCRIPT_SECRET,
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        degree: formData.degree,
+        universityName: formData.universityName,
+        yearOfClass: formData.yearOfClass,
+        semester: formData.semester,
+        branch: formData.branch,
+        percentage: formData.percentage,
+        internshipRole: formData.role,
+        resume: formData.resume,
+        portfolio: formData.portfolio,
+        country: formData.country,
+        state: formData.state,
+        city: formData.city,
+      };
 
-      Object.keys(formData).forEach((key) => {
-        formPayload.append(key, formData[key]);
-      });
-
-      const response = await fetch(apiUrl, {
+      await fetch(SCRIPT_URL, {
         method: "POST",
-        body: formPayload,
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain",
+        },
+        body: JSON.stringify(payload),
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        alert("✅ Application submitted successfully!");
-        setFormData({
-          fullName: "",
-          phone: "",
-          email: "",
-          degree: "",
-          institution: "",
-          graduationYear: "",
-          branch: "",
-          percentage: "",
-          role: "",
-          resume: null,
-          portfolio: "",
-          country: "",
-          state: "",
-          city: "",
-          pinCode: "",
-          feeConsent: false,
-          selectionConsent: false,
-          contactConsent: false,
-        });
-        setStep(1);
-      } else {
-        alert(data.message || "❌ Failed to submit application");
-      }
+      setStep(4);
     } catch (error) {
       console.error("Error:", error);
-      alert("⚠️ Server error. Is backend running?");
+      alert("⚠️ Submission failed. Please check your internet connection.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -178,10 +171,11 @@ const InternForm = () => {
           ></div>
         </div>
 
-        <h2 style={{ color: "#d4af37" }}>
+        <h2 style={{ color: "#ffffff" }}>
           {step === 1 && "Personal Information"}
           {step === 2 && "Education Information"}
           {step === 3 && "Address Information"}
+          {step === 4 && "Application Submitted"}
         </h2>
         {step === 3 && errors.consent && (
           <p className="error">{errors.consent}</p>
@@ -195,6 +189,7 @@ const InternForm = () => {
                 </label>
                 <input
                   type="text"
+                  pattern="[A-Za-z]+"
                   name="fullName"
                   placeholder="Enter Your Full Name"
                   value={formData.fullName}
@@ -208,11 +203,12 @@ const InternForm = () => {
                 Phone Number <span className="required">*</span>
               </label>
               <input
-                type="tel"
+                type="number"
                 name="phone"
                 placeholder="Enter Your Phone Number"
                 value={formData.phone}
                 onChange={handleChange}
+                className="no-spinner"
                 required
               />
               {errors.phone && <p className="error">{errors.phone}</p>}
@@ -251,34 +247,48 @@ const InternForm = () => {
               {errors.degree && <p className="error">{errors.degree}</p>}
 
               <label className="input-label">
-                Institution Name <span className="required">*</span>
+                University Name <span className="required">*</span>
               </label>
               <input
                 type="text"
-                name="institution"
-                placeholder="Enter Your Institution Name"
-                value={formData.institution}
+                name="universityName"
+                placeholder="Enter Your University Name"
+                value={formData.universityName}
                 onChange={handleChange}
                 required
               />
-              {errors.institution && (
-                <p className="error">{errors.institution}</p>
+              {errors.universityName && (
+                <p className="error">{errors.universityName}</p>
               )}
+
               <label className="input-label">
-                Year of Graduation <span className="required">*</span>
+                Year of Class <span className="required">*</span>
               </label>
               <input
-                type="number"
-                name="graduationYear"
-                placeholder="Enter Year of Graduation"
-                value={formData.graduationYear}
+                type="text"
+                name="yearOfClass"
+                placeholder="e.g. 1st Year / 2024"
+                value={formData.yearOfClass}
                 onChange={handleChange}
                 required
-                min = "0"
-                className="no-spinner"
               />
-              {errors.graduationYear && (
-                <p className="error">{errors.graduationYear}</p>
+              {errors.yearOfClass && (
+                <p className="error">{errors.yearOfClass}</p>
+              )}
+
+              <label className="input-label">
+                Semester <span className="required">*</span>
+              </label>
+              <input
+                type="text"
+                name="semester"
+                placeholder="e.g. 5th Semester"
+                value={formData.semester}
+                onChange={handleChange}
+                required
+              />
+              {errors.semester && (
+                <p className="error">{errors.semester}</p>
               )}
 
               <label className="input-label">
@@ -297,13 +307,12 @@ const InternForm = () => {
                 Percentage / CGPA <span className="required">*</span>
               </label>
               <input
-                type="number"
+                type="text"
                 name="percentage"
-                placeholder="Enter Your Percentage / CGPA "
+                placeholder="Enter Your Percentage / CGPA"
                 value={formData.percentage}
                 onChange={handleChange}
                 required
-                className="no-spinner"
               />
               {errors.percentage && (
                 <p className="error">{errors.percentage}</p>
@@ -331,13 +340,12 @@ const InternForm = () => {
               <label className="input-label">
                 Upload Resume <span className="required">*</span>
               </label>
-              <input
-                type="file"
-                name="resume"
-                accept=".pdf,.docx"
-                onChange={handleFileChange}
-                className={`input-file ${errors.resume ? "error-input" : ""}`}
-              />
+              <input 
+                type="url" 
+                name="resume" 
+                placeholder="Enter your resume link" 
+                value={formData.resume || ""} 
+                onChange={handleChange}  />
               {errors.resume && <p className="error">{errors.resume}</p>}
               <label className="input-label">
                 GitHub/Portfolio/LinkedIn Link
@@ -459,15 +467,34 @@ const InternForm = () => {
                   Back
                 </button>
 
-                <button type="submit">Pay</button>
+                <button type="submit" disabled={loading}>
+                  {loading ? "Processing..." : "Pay"}
+                </button>
               </div>
             </>
           )}
         </form>
-        <Disclaimer />
+        {step === 4 && (
+          <div className="msf-success" style={{ textAlign: "center", padding: "20px" }}>
+            <div className="msf-success-check" style={{ fontSize: "50px", color: "#22c55e", marginBottom: "20px" }}>✓</div>
+            <h2 style={{ color: "white" }}>Success!</h2>
+            <p style={{ color: "#8b949e" }}>Your internship application has been submitted successfully.</p>
+            <p style={{ color: "#8b949e" }}>Our team member will contact you soon.</p>
+            <button 
+              className="msf-btn-primary" 
+              style={{ marginTop: "30px", backgroundColor: "#7c3aed" }}
+              onClick={() => window.location.href = "/"}
+            >
+              Back to Home
+            </button>
+          </div>
+        )}
+        <MemoizedDisclaimer />
       </div>
     </div>
   );
 };
+
+const MemoizedDisclaimer = memo(Disclaimer);
 
 export default InternForm;

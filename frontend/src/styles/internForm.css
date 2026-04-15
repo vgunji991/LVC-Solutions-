@@ -11,7 +11,7 @@ body {
 }
 
 .form-card {
-  background: linear-gradient(145deg, #0f172a, #111827);
+  background: #161b22;
   padding: 40px;
   border-radius: 12px;
   width: 450px;
@@ -80,16 +80,16 @@ button {
   padding: 12px;
   border-radius: 8px;
   border: none;
-  background: #7c3aed;
-  color: white;
+  color: #fff;
+  background-color: #6c757d;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
 }
 
-button:hover {
+/* button:hover {
   background: #6d28d9;
-}
+} */
 
 .button-group {
   display: flex;

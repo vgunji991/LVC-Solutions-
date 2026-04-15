@@ -30,7 +30,7 @@ const ServiceLandingPage = () => {
           {/* First 6 images */}
           {images.slice(0, 6).map((img, index) => (
             <div key={index} className="col-md-4 position-relative image-container">
-              <img className="w-100 custom-image" src={img.src} alt={img.alt} />
+              <img className="w-100 custom-image" src={img.src} alt={img.alt} loading="lazy" />
 
               <div className="overlay-text">
                 <h2 className="industries-we-serve-title-text">{img.title}</h2>

@@ -1,7 +1,7 @@
-import { useState, useRef } from "react";
+import { useState, useRef, memo } from "react";
 import "../styles/FullTimeRole.css";
 
-const Field = ({ label, required, optional, error, children }) => (
+const Field = memo(({ label, required, optional, error, children }) => (
   <div className="msf-field">
     <label className="msf-label">
       {label}
@@ -11,27 +11,31 @@ const Field = ({ label, required, optional, error, children }) => (
     {children}
     {error && <span className="msf-err">{error}</span>}
   </div>
-);
+));
 
-const Input = ({ error, ...props }) => (
+const Input = memo(({ error, ...props }) => (
   <input className={`msf-input${error ? " err" : ""}`} {...props} />
-);
+));
 
-const SelectField = ({ error, children, ...props }) => (
+const SelectField = memo(({ error, children, ...props }) => (
   <div className="msf-select-wrap">
     <select className={`msf-select${error ? " err" : ""}`} {...props}>
       {children}
     </select>
   </div>
-);
+));
 
-const Textarea = (props) => (
+const Textarea = memo((props) => (
   <textarea className="msf-textarea" {...props} />
-);
+));
+
+const SCRIPT_URL = process.env.REACT_APP_FULLTIME_SCRIPT_URL;
+const SCRIPT_SECRET = process.env.REACT_APP_SCRIPT_SECRET;
 
 const FullTimeRolesForm = () => {
   const TOTAL = 4;
   const [step, setStep] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const [p1, setP1] = useState({
     firstName: "",
@@ -51,6 +55,7 @@ const FullTimeRolesForm = () => {
   const [eduEntries, setEduEntries] = useState([]);
   const [eduForm, setEduForm] = useState({
     open: false,
+    id: null,
     degree: "",
     institution: "",
     gradYear: "",
@@ -59,6 +64,7 @@ const FullTimeRolesForm = () => {
   const [workEntries, setWorkEntries] = useState([]);
   const [workForm, setWorkForm] = useState({
     open: false,
+    id: null,
     jobTitle: "",
     company: "",
     expType: "",
@@ -66,7 +72,7 @@ const FullTimeRolesForm = () => {
     desc: "",
   });
 
-  const [resume, setResume] = useState(null);
+  const [resume, setResume] = useState("");
   const [profilePic, setProfilePic] = useState(null);
   const [skillInput, setSkillInput] = useState("");
   const [skills, setSkills] = useState([]);
@@ -77,22 +83,68 @@ const FullTimeRolesForm = () => {
   const [locInput, setLocInput] = useState("");
   const [locations, setLocations] = useState([]);
   const [p4Err, setP4Err] = useState({});
+  const [eduErr, setEduErr] = useState("");
+  const [workErr, setWorkErr] = useState("");
 
-  const resumeRef = useRef(null);
+  // const resumeRef = useRef(null);
   const profileRef = useRef(null);
-  const skillInputRef = useRef(null);
 
-  const barWidth = (i) => (i < step ? "100%" : "0%");
+  // const barWidth = (i) => (i < step ? "100%" : "0%");
+  // const barWidth = (i) => (i <= step - 1 ? "100%" : "0%");
 
-  function goNext() {
+  async function goNext() {
     if (step === 1 && !validateStep1()) return;
+    if (step === 2 && !validateStep2()) return;
+    if (step === 3 && !validateStep3()) return;
     if (step === 4 && !validateStep4()) return;
     if (step < TOTAL) {
       setStep((s) => s + 1);
     } else {
-      setStep(5);
+      await handleSubmit();
     }
     window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  async function handleSubmit() {
+    if (loading) return;
+    setLoading(true);
+    try {
+      // Flatten data for easier spreadsheet storage
+      const payload = {
+        secret: SCRIPT_SECRET,
+        firstName: p1.firstName,
+        lastName: p1.lastName,
+        phone: p1.phone,
+        email: p1.email,
+        dob: p1.dob,
+        citizenship: p1.citizenship,
+        country: p1.country,
+        address: p1.street,
+        city: p1.city,
+        state: p1.state,
+        resume: resume,
+        skills: skills.join(", "),
+        desiredJobTitle: jobTitle,
+        education: JSON.stringify(eduEntries),
+        workExperience: JSON.stringify(workEntries),
+      };
+
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "text/plain",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      setStep(5);
+    } catch (error) {
+      console.error("Error:", error);
+      alert("⚠️ Submission failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   }
 
   function goBack() {
@@ -111,8 +163,40 @@ const FullTimeRolesForm = () => {
     required.forEach((k) => {
       if (!p1[k].trim()) errs[k] = "Required";
     });
+    const emailValue = p1.email.toLowerCase();
+    if (emailValue && !emailValue.endsWith("@gmail.com")) {
+      errs.email = "Must be a valid @gmail.com address";
+    }
     setP1Err(errs);
     return Object.keys(errs).length === 0;
+  }
+
+  function handleResume(e) {
+  // Use e.target.value for text/URL inputs
+  const link = e.target.value; 
+  setResume(link);
+  
+  // Clear error message if user has typed something
+  if (link.trim()) {
+    setP4Err((prev) => ({ ...prev, resume: undefined }));
+  }
+}
+  function validateStep2() {
+    if (eduEntries.length === 0) {
+      setEduErr("Please add at least one education entry.");
+      return false;
+    }
+    setEduErr("");
+    return true;
+  }
+
+  function validateStep3() {
+    if (workEntries.length === 0) {
+      setWorkErr("Please add at least one work experience entry.");
+      return false;
+    }
+    setWorkErr("");
+    return true;
   }
 
   function validateStep4() {
@@ -125,13 +209,33 @@ const FullTimeRolesForm = () => {
   }
 
   function saveEdu() {
-    const { degree, institution, gradYear } = eduForm;
+    const { degree, institution, gradYear, id } = eduForm;
     if (!degree && !institution && !gradYear) return;
-    setEduEntries((prev) => [
-      ...prev,
-      { id: Date.now(), degree, institution, gradYear },
-    ]);
-    setEduForm({ open: false, degree: "", institution: "", gradYear: "" });
+
+    if (id) {
+      // Update existing
+      setEduEntries((prev) =>
+        prev.map((e) => (e.id === id ? { ...e, degree, institution, gradYear } : e))
+      );
+    } else {
+      // Add new
+      setEduEntries((prev) => [
+        ...prev,
+        { id: Date.now(), degree, institution, gradYear },
+      ]);
+    }
+    setEduForm({ open: false, id: null, degree: "", institution: "", gradYear: "" });
+    setEduErr("");
+  }
+
+  function editEdu(entry) {
+    setEduForm({
+      open: true,
+      id: entry.id,
+      degree: entry.degree,
+      institution: entry.institution,
+      gradYear: entry.gradYear
+    });
   }
 
   function removeEdu(id) {
@@ -139,19 +243,37 @@ const FullTimeRolesForm = () => {
   }
 
   function saveWork() {
-    const { jobTitle: wt, company } = workForm;
-    if (!wt && !company) return;
-    setWorkEntries((prev) => [
-      ...prev,
-      { id: Date.now(), ...workForm },
-    ]);
+    const { jobTitle, company, id } = workForm;
+    if (!jobTitle && !company) return;
+
+    if (id) {
+      // Update existing
+      setWorkEntries((prev) =>
+        prev.map((w) => (w.id === id ? { ...w, ...workForm } : w))
+      );
+    } else {
+      // Add new
+      setWorkEntries((prev) => [
+        ...prev,
+        { id: Date.now(), ...workForm },
+      ]);
+    }
     setWorkForm({
       open: false,
+      id: null,
       jobTitle: "",
       company: "",
       expType: "",
       period: "",
       desc: "",
+    });
+    setWorkErr("");
+  }
+
+  function editWork(entry) {
+    setWorkForm({
+      ...entry,
+      open: true
     });
   }
 
@@ -187,17 +309,10 @@ const FullTimeRolesForm = () => {
       setLocInput("");
     }
   }
-
+  const filterAlphabets = (val) => val.replace(/[^a-zA-Z\s]/g, "");
+  const filterNumbers = (val) => val.replace(/\D/g, "");
   function removeLocation(l) {
     setLocations((prev) => prev.filter((x) => x !== l));
-  }
-
-  function handleResume(e) {
-    const f = e.target.files[0];
-    if (f) {
-      setResume(f);
-      setP4Err((prev) => ({ ...prev, resume: undefined }));
-    }
   }
 
   function handleProfile(e) {
@@ -207,12 +322,21 @@ const FullTimeRolesForm = () => {
 
   return (
     <div className="msf-wrap">
+     <div style={{ width: "100%", maxWidth: "540px" }}> 
       <div className="msf-card">
         {step <= TOTAL && (
           <div className="msf-progress">
             {[0, 1, 2, 3].map((i) => (
               <div key={i} className="msf-bar">
-                <div className="msf-bar-fill" style={{ width: barWidth(i) }} />
+                <div
+                  className="msf-bar-fill"
+                  style={{
+                    width: i <= step - 1 ? "100%" : "0%",
+                    height: "5px",
+                    background: "#7c3aed",
+                    display: "block",
+                  }}
+                />
               </div>
             ))}
             <span className="msf-step-label">Step {step} of {TOTAL}</span>
@@ -221,8 +345,10 @@ const FullTimeRolesForm = () => {
 
         {step === 1 && (
           <>
-            <div className="msf-header">
-              <h1>Personal Information</h1>
+            <div className="msf-header mt-10">
+              <h1>
+                {step === 5 ? "Application Submitted" : "Personal Information"}
+              </h1>
             </div>
 
             <div className="msf-section msf-section-first">Personal Information</div>
@@ -233,7 +359,7 @@ const FullTimeRolesForm = () => {
                   value={p1.firstName}
                   error={p1Err.firstName}
                   placeholder="First name"
-                  onChange={(e) => setP1((p) => ({ ...p, firstName: e.target.value }))}
+                  onChange={(e) => setP1((p) => ({ ...p, firstName: filterAlphabets(e.target.value) }))}
                 />
               </Field>
               <Field label="Last Name" required error={p1Err.lastName}>
@@ -241,7 +367,7 @@ const FullTimeRolesForm = () => {
                   value={p1.lastName}
                   error={p1Err.lastName}
                   placeholder="Last name"
-                  onChange={(e) => setP1((p) => ({ ...p, lastName: e.target.value }))}
+                  onChange={(e) => setP1((p) => ({ ...p, lastName: filterAlphabets(e.target.value) }))}
                 />
               </Field>
             </div>
@@ -250,7 +376,7 @@ const FullTimeRolesForm = () => {
               <Input
                 value={p1.middleName}
                 placeholder="(Optional)"
-                onChange={(e) => setP1((p) => ({ ...p, middleName: e.target.value }))}
+                onChange={(e) => setP1((p) => ({ ...p, middleName: filterAlphabets(e.target.value) }))}
               />
             </Field>
 
@@ -260,26 +386,38 @@ const FullTimeRolesForm = () => {
                 value={p1.phone}
                 error={p1Err.phone}
                 placeholder="Phone number"
-                onChange={(e) => setP1((p) => ({ ...p, phone: e.target.value }))}
+                onChange={(e) => setP1((p) => ({ ...p, phone: filterNumbers(e.target.value) }))}
               />
             </Field>
 
-            <Field label="Email Address">
+            <Field label="Email Address" required error={p1Err.email}>
               <Input
                 type="email"
                 value={p1.email}
-                placeholder="Email address"
-                onChange={(e) => setP1((p) => ({ ...p, email: e.target.value }))}
+                error={p1Err.email}
+                placeholder="yourname@gmail.com"
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setP1((p) => ({ ...p, email: val }));
+                  
+                  // Optional: Clear the error as soon as they fix the suffix
+                  if (val.toLowerCase().endsWith("@gmail.com")) {
+                    setP1Err((prev) => ({ ...prev, email: undefined }));
+                  }
+                }}
               />
             </Field>
 
             <div className="msf-row2">
               <Field label="Date of Birth" required error={p1Err.dob}>
                 <Input
+                  type="date"
                   value={p1.dob}
                   error={p1Err.dob}
-                  placeholder="DD/MM/YYYY"
-                  onChange={(e) => setP1((p) => ({ ...p, dob: e.target.value }))}
+                  onChange={(e) => setP1((prev) => ({ 
+                    ...prev, 
+                    dob: e.target.value 
+                  }))}
                 />
               </Field>
               <Field label="Citizenship" required error={p1Err.citizenship}>
@@ -329,7 +467,10 @@ const FullTimeRolesForm = () => {
                   value={p1.city}
                   error={p1Err.city}
                   placeholder="City"
-                  onChange={(e) => setP1((p) => ({ ...p, city: e.target.value }))}
+                  onChange={(e) => setP1((prev) => ({ 
+                    ...prev, 
+                    city: filterAlphabets(e.target.value) 
+                  }))}
                 />
               </Field>
               <Field label="State" required error={p1Err.state}>
@@ -337,7 +478,10 @@ const FullTimeRolesForm = () => {
                   value={p1.state}
                   error={p1Err.state}
                   placeholder="State"
-                  onChange={(e) => setP1((p) => ({ ...p, state: e.target.value }))}
+                  onChange={(e) => setP1((prev) => ({ 
+                    ...prev, 
+                    state: filterAlphabets(e.target.value) 
+                  }))}
                 />
               </Field>
             </div>
@@ -351,22 +495,29 @@ const FullTimeRolesForm = () => {
         {step === 2 && (
           <>
             <div className="msf-header">
-              <h1>Education</h1>
+              <h1>Education <span className="msf-req">*</span></h1>
               <p>Add your educational background</p>
             </div>
 
+            {eduErr && <div className="msf-err" style={{ marginBottom: "15px", display: "block" }}>{eduErr}</div>}
+
             {eduEntries.map((entry) => (
               <div key={entry.id} className="msf-chip">
-                <div>
+                <div className="msf-chip-content">
                   <div className="msf-chip-title">{entry.degree || "—"}</div>
                   <div className="msf-chip-sub">
                     {entry.institution}
                     {entry.gradYear ? ` · ${entry.gradYear}` : ""}
                   </div>
                 </div>
-                <button className="msf-chip-remove" onClick={() => removeEdu(entry.id)}>
-                  ✕
-                </button>
+                <div className="msf-chip-actions">
+                  <button className="msf-chip-btn edit" onClick={() => editEdu(entry)}>
+                    ✎
+                  </button>
+                  <button className="msf-chip-btn remove" onClick={() => removeEdu(entry.id)}>
+                    ✕
+                  </button>
+                </div>
               </div>
             ))}
 
@@ -386,29 +537,29 @@ const FullTimeRolesForm = () => {
                 <div className="msf-form-box-title">Add Education</div>
                 <Field label="Degree / Major">
                   <Input
-                    value={eduForm.degree}
-                    placeholder="e.g. BS Computer Science"
-                    onChange={(e) =>
-                      setEduForm((f) => ({ ...f, degree: e.target.value }))
-                    }
+                        value={eduForm.degree}
+                        placeholder="Enter your degree"
+                        onChange={(e) => setEduForm((prev) => ({ 
+                          ...prev, 
+                          degree: filterAlphabets(e.target.value) 
+                        }))}
                   />
                 </Field>
                 <Field label="University / Institution">
                   <Input
                     value={eduForm.institution}
                     placeholder="e.g. Stanford University"
-                    onChange={(e) =>
-                      setEduForm((f) => ({ ...f, institution: e.target.value }))
-                    }
+                    onChange={(e) => setEduForm((prev) => ({ 
+                      ...prev, 
+                      institution: filterAlphabets(e.target.value) 
+                    }))}
                   />
                 </Field>
                 <Field label="Graduation Year">
                   <Input
                     value={eduForm.gradYear}
                     placeholder="e.g. 2023"
-                    onChange={(e) =>
-                      setEduForm((f) => ({ ...f, gradYear: e.target.value }))
-                    }
+                    onChange={(e) => setEduForm((f) => ({ ...f, gradYear: filterNumbers(e.target.value) }))}
                   />
                 </Field>
                 <div className="msf-form-btn-row">
@@ -417,6 +568,7 @@ const FullTimeRolesForm = () => {
                     onClick={() =>
                       setEduForm({
                         open: false,
+                        id: null,
                         degree: "",
                         institution: "",
                         gradYear: "",
@@ -441,7 +593,7 @@ const FullTimeRolesForm = () => {
                 style={{ marginTop: 0 }}
                 onClick={goNext}
               >
-                Skip
+                Next
               </button>
             </div>
           </>
@@ -450,13 +602,15 @@ const FullTimeRolesForm = () => {
         {step === 3 && (
           <>
             <div className="msf-header">
-              <h1>Work Experience</h1>
+              <h1>Work Experience <span className="msf-req">*</span></h1>
               <p>Add your professional experience</p>
             </div>
 
+            {workErr && <div className="msf-err" style={{ marginBottom: "15px", display: "block" }}>{workErr}</div>}
+
             {workEntries.map((entry) => (
               <div key={entry.id} className="msf-chip">
-                <div>
+                <div className="msf-chip-content">
                   <div className="msf-chip-title">
                     {entry.jobTitle || "—"}
                     {entry.expType && (
@@ -468,12 +622,14 @@ const FullTimeRolesForm = () => {
                     {entry.period ? ` · ${entry.period}` : ""}
                   </div>
                 </div>
-                <button
-                  className="msf-chip-remove"
-                  onClick={() => removeWork(entry.id)}
-                >
-                  ✕
-                </button>
+                <div className="msf-chip-actions">
+                  <button className="msf-chip-btn edit" onClick={() => editWork(entry)}>
+                    ✎
+                  </button>
+                  <button className="msf-chip-btn remove" onClick={() => removeWork(entry.id)}>
+                    ✕
+                  </button>
+                </div>
               </div>
             ))}
 
@@ -493,26 +649,29 @@ const FullTimeRolesForm = () => {
                   <Input
                     value={workForm.jobTitle}
                     placeholder="e.g. Software Engineer"
-                    onChange={(e) =>
-                      setWorkForm((f) => ({ ...f, jobTitle: e.target.value }))
-                    }
+                    onChange={(e) => setWorkForm((prev) => ({ 
+                      ...prev, 
+                      jobTitle: filterAlphabets(e.target.value) 
+                    }))}
                   />
                 </Field>
                 <Field label="Company">
                   <Input
                     value={workForm.company}
                     placeholder="e.g. Google"
-                    onChange={(e) =>
-                      setWorkForm((f) => ({ ...f, company: e.target.value }))
-                    }
+                    onChange={(e) => setWorkForm((prev) => ({ 
+                      ...prev, 
+                      company: filterAlphabets(e.target.value) 
+                    }))}
                   />
                 </Field>
                 <Field label="Experience type">
                   <SelectField
                     value={workForm.expType}
-                    onChange={(e) =>
-                      setWorkForm((f) => ({ ...f, expType: e.target.value }))
-                    }
+                    onChange={(e) => setWorkForm((prev) => ({ 
+                      ...prev, 
+                      expType: e.target.value 
+                    }))}
                   >
                     <option value="">Select</option>
                     <option value="full-time">full-time</option>
@@ -526,7 +685,7 @@ const FullTimeRolesForm = () => {
                     value={workForm.period}
                     placeholder="e.g. 2020 - Present"
                     onChange={(e) =>
-                      setWorkForm((f) => ({ ...f, period: e.target.value }))
+                      setWorkForm((f) => ({ ...f, period: filterNumbers(e.target.value) }))
                     }
                   />
                 </Field>
@@ -545,6 +704,7 @@ const FullTimeRolesForm = () => {
                     onClick={() =>
                       setWorkForm({
                         open: false,
+                        id: null,
                         jobTitle: "",
                         company: "",
                         expType: "",
@@ -571,7 +731,7 @@ const FullTimeRolesForm = () => {
                 style={{ marginTop: 0 }}
                 onClick={goNext}
               >
-                Skip
+                Next
               </button>
             </div>
           </>
@@ -589,20 +749,18 @@ const FullTimeRolesForm = () => {
             {/* Resume upload */}
             <Field label="Resume" required error={p4Err.resume}>
               <input
-                type="file"
-                accept=".pdf"
-                ref={resumeRef}
-                style={{ display: "none" }}
+                type="url"
+                placeholder="Enter your resume link"
                 onChange={handleResume}
               />
-              <button
+              {/* <button
                 type="button"
                 className={`msf-upload${resume ? " has-file" : ""}`}
                 onClick={() => resumeRef.current && resumeRef.current.click()}
               >
                 <span style={{ fontSize: 22 }}>⬆</span>
                 <span>{resume ? `✓ ${resume.name}` : "Upload Resume (PDF)"}</span>
-              </button>
+              </button>  */}
             </Field>
 
             <Field label="Profile Image" optional>
@@ -631,25 +789,26 @@ const FullTimeRolesForm = () => {
                 Skills <span className="msf-req">*</span>
                 <span className="msf-opt"> (Min 3 required)</span>
               </label>
-              <div
-                className={`msf-skills-wrap${p4Err.skills ? " err" : ""}`}
-                onClick={() => skillInputRef.current && skillInputRef.current.focus()}
-              >
-                {skills.map((s) => (
-                  <span key={s} className="msf-skill-tag">
-                    {s}
-                    <button type="button" onClick={() => removeSkill(s)}>×</button>
-                  </span>
-                ))}
-                <input
-                  ref={skillInputRef}
-                  className="msf-skills-input"
-                  value={skillInput}
-                  placeholder="Type to search or add skills..."
-                  onChange={(e) => setSkillInput(e.target.value)}
-                  onKeyDown={handleSkillKey}
-                />
-              </div>
+              
+              <Input
+                className="msf-input"
+                value={skillInput}
+                placeholder="Type skill and press Enter..."
+                onChange={(e) => setSkillInput(e.target.value)}
+                onKeyDown={handleSkillKey}
+                error={p4Err.skills}
+              />
+
+              {skills.length > 0 && (
+                <div className="msf-loc-tags" style={{ marginTop: "10px" }}>
+                  {skills.map((s) => (
+                    <span key={s} className="msf-skill-tag">
+                      {s}
+                      <button type="button" onClick={() => removeSkill(s)}>×</button>
+                    </span>
+                  ))}
+                </div>
+              )}
               {p4Err.skills && <span className="msf-err">{p4Err.skills}</span>}
             </div>
 
@@ -744,13 +903,31 @@ const FullTimeRolesForm = () => {
                 className="msf-btn-primary"
                 style={{ marginTop: 0 }}
                 onClick={goNext}
+                disabled={loading}
               >
-                Complete Registration
+                {loading ? "Processing..." : "Complete Registration"}
               </button>
             </div>
           </>
         )}
 
+        {step === 5 && (
+          <div className="msf-success" style={{ textAlign: "center", padding: "20px" }}>
+            <div className="msf-success-check" style={{ fontSize: "50px", color: "#22c55e", marginBottom: "20px" }}>✓</div>
+            <h2 style={{ color: "white" }}>Success!</h2>
+            <p style={{ color: "#8b949e" }}>Your full-time role application has been submitted successfully.</p>
+            <p style={{ color: "#8b949e" }}>Our team member will contact you soon.</p>
+            <button 
+              className="msf-btn-primary" 
+              style={{ marginTop: "30px", backgroundColor: "#7c3aed" }}
+              onClick={() => window.location.href = "/"}
+            >
+              Back to Home
+            </button>
+          </div>
+        )}
+
+      </div>
       </div>
     </div>
   );
