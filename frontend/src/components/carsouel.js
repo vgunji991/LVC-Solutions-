@@ -71,7 +71,7 @@ function UncontrolledExample() {
 
         <Carousel.Item>
           <div style={styles.videoWrapper}>
-            <img src={landingImg} style={styles.image} alt="Landing" />
+            <img src={landingImg} style={styles.image} alt="Landing" loading="lazy" />
             {/* <img src="../assets/lvc_landing.png" /> */}
             <div style={styles.caption} className="carousel-caption-style">
               <h1>Software Solutions.</h1>
