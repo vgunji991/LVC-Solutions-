@@ -210,8 +210,10 @@ const FullTimeRolesForm = () => {
 
   function saveEdu() {
     const { degree, institution, gradYear, id } = eduForm;
-    if (!degree && !institution && !gradYear) return;
-
+    if (!degree.trim() || !institution.trim() || !gradYear.trim()){
+      setEduErr("All education fields are required.");
+      return;
+    }
     if (id) {
       // Update existing
       setEduEntries((prev) =>
@@ -243,9 +245,13 @@ const FullTimeRolesForm = () => {
   }
 
   function saveWork() {
-    const { jobTitle, company, id } = workForm;
-    if (!jobTitle && !company) return;
-
+    const { jobTitle, company, expType, period, desc, id} = workForm;
+    // if (!jobTitle && !company) return;
+    if (
+      !jobTitle.trim() || !company.trim() || !expType.trim() || !period.trim() || !desc.trim()) {
+      setWorkErr("All work experience fields are required.");
+      return;
+    }
     if (id) {
       // Update existing
       setWorkEntries((prev) =>
@@ -285,16 +291,20 @@ const FullTimeRolesForm = () => {
   function handleSkillKey(e) {
     if (e.key === "Enter" || e.key === ",") {
       e.preventDefault();
-      const val = skillInput.trim().replace(/,$/, "");
-      if (val && !skills.includes(val)) {
-        const next = [...skills, val];
-        setSkills(next);
-        if (next.length >= 3) {
-          setP4Err((prev) => ({ ...prev, skills: undefined }));
-        }
-      }
-      setSkillInput("");
+      addSkill();
     }
+  }
+
+  function addSkill() {
+    const val = skillInput.trim().replace(/,$/, "");
+    if (val && !skills.includes(val)) {
+      const next = [...skills, val];
+      setSkills(next);
+      if (next.length >= 3) {
+        setP4Err((prev) => ({ ...prev, skills: undefined }));
+      }
+    }
+    setSkillInput("");
   }
 
   function removeSkill(s) {
@@ -333,7 +343,7 @@ const FullTimeRolesForm = () => {
                   style={{
                     width: i <= step - 1 ? "100%" : "0%",
                     height: "5px",
-                    background: "#7c3aed",
+                    background: "#ffffff",
                     display: "block",
                   }}
                 />
@@ -535,7 +545,7 @@ const FullTimeRolesForm = () => {
             {eduForm.open && (
               <div className="msf-form-box">
                 <div className="msf-form-box-title">Add Education</div>
-                <Field label="Degree / Major">
+                <Field label="Degree / Major" required>
                   <Input
                         value={eduForm.degree}
                         placeholder="Enter your degree"
@@ -545,7 +555,7 @@ const FullTimeRolesForm = () => {
                         }))}
                   />
                 </Field>
-                <Field label="University / Institution">
+                <Field label="University / Institution" required>
                   <Input
                     value={eduForm.institution}
                     placeholder="e.g. Stanford University"
@@ -555,7 +565,7 @@ const FullTimeRolesForm = () => {
                     }))}
                   />
                 </Field>
-                <Field label="Graduation Year">
+                <Field label="Graduation Year" required>
                   <Input
                     value={eduForm.gradYear}
                     placeholder="e.g. 2023"
@@ -645,7 +655,7 @@ const FullTimeRolesForm = () => {
             {workForm.open && (
               <div className="msf-form-box">
                 <div className="msf-form-box-title">Add Role</div>
-                <Field label="Job Title">
+                <Field label="Job Title" required>
                   <Input
                     value={workForm.jobTitle}
                     placeholder="e.g. Software Engineer"
@@ -655,7 +665,7 @@ const FullTimeRolesForm = () => {
                     }))}
                   />
                 </Field>
-                <Field label="Company">
+                <Field label="Company" required>
                   <Input
                     value={workForm.company}
                     placeholder="e.g. Google"
@@ -665,7 +675,7 @@ const FullTimeRolesForm = () => {
                     }))}
                   />
                 </Field>
-                <Field label="Experience type">
+                <Field label="Experience type" required>
                   <SelectField
                     value={workForm.expType}
                     onChange={(e) => setWorkForm((prev) => ({ 
@@ -680,7 +690,7 @@ const FullTimeRolesForm = () => {
                     <option value="internship">internship</option>
                   </SelectField>
                 </Field>
-                <Field label="Period">
+                <Field label="Period" required>
                   <Input
                     value={workForm.period}
                     placeholder="e.g. 2020 - Present"
@@ -689,7 +699,7 @@ const FullTimeRolesForm = () => {
                     }
                   />
                 </Field>
-                <Field label="Description">
+                <Field label="Description" required>
                   <Textarea
                     value={workForm.desc}
                     placeholder="Brief description of your role..."
@@ -790,14 +800,18 @@ const FullTimeRolesForm = () => {
                 <span className="msf-opt"> (Min 3 required)</span>
               </label>
               
-              <Input
-                className="msf-input"
-                value={skillInput}
-                placeholder="Type skill and press Enter..."
-                onChange={(e) => setSkillInput(e.target.value)}
-                onKeyDown={handleSkillKey}
-                error={p4Err.skills}
-              />
+              <div className="msf-loc-row">
+                <Input
+                  value={skillInput}
+                  placeholder="Type skill name..."
+                  onChange={(e) => setSkillInput(e.target.value)}
+                  onKeyDown={handleSkillKey}
+                  error={p4Err.skills}
+                />
+                <button type="button" className="msf-btn-plus" onClick={addSkill}>
+                  +
+                </button>
+              </div>
 
               {skills.length > 0 && (
                 <div className="msf-loc-tags" style={{ marginTop: "10px" }}>
