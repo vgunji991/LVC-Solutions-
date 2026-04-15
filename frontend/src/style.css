@@ -3240,6 +3240,29 @@ font-size: 1.75rem !important;
   background-color: grey;
 }
 
+/* Mobile styles for blog post */
+@media (max-width: 768px) {
+  .blog-posts-imgs{
+    width: 100%;
+    height: 300px;
+  }
+  .blog-post-img-container {
+    width: 100%;
+    height: 100vw;
+    min-height: 250px;
+  }
+  
+  .blog-post-headings {
+    width: 90%;
+    padding: 15px 0px;
+  }
+  
+  .blog-post-content {
+    width: 90%;
+    padding: 15px 0px;
+  }
+}
+
 /* social media footer container */
 
 .social-media-container-footer {
