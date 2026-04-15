@@ -2268,6 +2268,7 @@ font-size: 1.75rem !important;
    }
    .paragraph-clamp{
      font-size: 0.9rem !important;
+     text-align: left;
    }
    .text-section-heading{
     font-size: 1.3rem;
