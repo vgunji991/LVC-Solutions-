@@ -2915,7 +2915,6 @@ font-size: 1.75rem !important;
 
 .blogs-container {
   background-color: white;
-  padding: 48px 46px
 }
 
 
@@ -2967,6 +2966,7 @@ font-size: 1.75rem !important;
 .blog-herotitle {
   color: white;
   font-weight: 600;
+  padding: 5%;
 }
 
 
