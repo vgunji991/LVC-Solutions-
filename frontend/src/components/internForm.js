@@ -21,7 +21,7 @@ const InternForm = () => {
     branch: "",
     percentage: "",
     role: "",
-    resume: null,
+    resume: "",
     portfolio: "",
     country: "",
     state: "",
@@ -47,14 +47,17 @@ const InternForm = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    const alphabetFields = ["fullName", "city", "state", "country", "degree", "branch"];
-    const numericFields = ["pinCode"];
+    const alphabetFields = ["fullName", "universityName", "city", "state", "country", "degree", "branch"];
+    const numericFields = ["pinCode", "yearOfClass", "semester"];
     let finalValue = type === "checkbox" ? checked : value;
     if (alphabetFields.includes(name) && type !== "checkbox") {
       finalValue = value.replace(/[^a-zA-Z\s]/g, ""); 
     }
     if (numericFields.includes(name)) {
       finalValue = value.replace(/[^0-9]/g, ""); 
+    }
+    if (name === "phone") {
+      finalValue = value.replace(/[^0-9]/g, "").slice(0, 15);
     }
     if (name === "percentage") {
     finalValue = value.replace(/[^0-9.]/g, "");
@@ -70,7 +73,11 @@ const InternForm = () => {
 
     if (step === 1) {
       if (!formData.fullName) newErrors.fullName = "Full Name is required";
-      if (!formData.phone) newErrors.phone = "Phone is required";
+      if (!formData.phone) {
+        newErrors.phone = "Phone is required";
+      } else if (formData.phone.length < 10) {
+        newErrors.phone = "Phone number must be at least 10 digits";
+      }
       if (!formData.email) {
           newErrors.email = "Email is required";
         } else if (!formData.email.toLowerCase().endsWith("@gmail.com")) {
@@ -87,7 +94,11 @@ const InternForm = () => {
       if (!formData.semester)
         newErrors.semester = "Semester is required";
       if (!formData.branch) newErrors.branch = "Branch is required";
-      if (!formData.percentage) newErrors.percentage = "Percentage is required";
+      if (!formData.percentage) {
+        newErrors.percentage = "Percentage is required";
+      } else if (parseFloat(formData.percentage) > 100) {
+        newErrors.percentage = "Percentage cannot exceed 100";
+      }
       if (!formData.role) newErrors.role = "Internship Role is required";
       if (!formData.resume) newErrors.resume = "Resume is required";
     }
@@ -97,7 +108,7 @@ const InternForm = () => {
       if (!formData.state) newErrors.state = "State is required";
       if (!formData.city) newErrors.city = "City is required";
       if (!formData.pinCode) newErrors.pinCode = "pinCode is required";
-      if (!formData.state) newErrors.state = "State is required";
+      // if (!formData.state) newErrors.state = "State is required";
       if (!formData.feeConsent || !formData.selectionConsent || !formData.contactConsent)
         newErrors.consent = "You must agree to all consents to proceed";
     }
@@ -203,7 +214,7 @@ const InternForm = () => {
                 Phone Number <span className="required">*</span>
               </label>
               <input
-                type="number"
+                type="tel"
                 name="phone"
                 placeholder="Enter Your Phone Number"
                 value={formData.phone}
@@ -410,7 +421,7 @@ const InternForm = () => {
               {errors.city && <p className="error">{errors.city}</p>}
 
               <label className="input-label">
-                pinCode <span className="required">*</span>
+                PinCode <span className="required">*</span>
               </label>
               <input
                 type="text"
