@@ -163,6 +163,9 @@ const FullTimeRolesForm = () => {
     required.forEach((k) => {
       if (!p1[k].trim()) errs[k] = "Required";
     });
+    if (p1.phone && p1.phone.length < 10) {
+      errs.phone = "Phone number must be at least 10 digits";
+    }
     const emailValue = p1.email.toLowerCase();
     if (emailValue && !emailValue.endsWith("@gmail.com")) {
       errs.email = "Must be a valid @gmail.com address";
@@ -396,7 +399,13 @@ const FullTimeRolesForm = () => {
                 value={p1.phone}
                 error={p1Err.phone}
                 placeholder="Phone number"
-                onChange={(e) => setP1((p) => ({ ...p, phone: filterNumbers(e.target.value) }))}
+                maxLength={15}
+                onChange={(e) =>
+                  setP1((p) => ({
+                    ...p,
+                    phone: filterNumbers(e.target.value).slice(0, 15),
+                  }))
+                }
               />
             </Field>
 

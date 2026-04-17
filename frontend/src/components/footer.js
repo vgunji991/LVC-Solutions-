@@ -137,7 +137,6 @@ export default function Footer() {
   return (
     <footer className="footer-container">
       <div className="footer-content">
-        
         {/* Logo Section */}
         <div className="logo-section">
           <img src={logo} alt="Logo" width={120} height={90} />
@@ -163,7 +162,10 @@ export default function Footer() {
             <div className="link-list">
               <p className="footer-link">
                 {address.split("\n").map((line, i) => (
-                  <span key={i}>{line}<br /></span>
+                  <span key={i}>
+                    {line}
+                    <br />
+                  </span>
                 ))}
               </p>
               <a href="mailto:info@lvc-solutions.com" className="footer-link">
@@ -176,11 +178,22 @@ export default function Footer() {
         {/* Social Icons */}
         <div className="social-icons">
           {socialLinks.map(({ icon: Icon, label, url }) => (
-            <a key={label} href={url} className="icon-circle" aria-label={label} target="_blank" rel="noreferrer">
+            <a
+              key={label}
+              href={url}
+              className="icon-circle"
+              aria-label={label}
+              target="_blank"
+              rel="noreferrer"
+            >
               <Icon size={18} />
             </a>
           ))}
         </div>
+
+        <p className="text-center mb-0">
+          SAM.gov Registered | CAGE Code Verified | U.S. State & Federal Vendor
+        </p>
 
         {/* Bottom Rights */}
         <div className="footer-bottom">
