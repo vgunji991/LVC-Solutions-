@@ -62,16 +62,25 @@
 
 .trusted-cta {
   margin-top: 1rem;
+  display: flex;
+  justify-content: center;
 }
 
 .cta-button {
   color: white;
   border: none;
-  width: 30%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 24rem);
+  max-width: 100%;
+  padding: 0.95rem 1.5rem;
   border: white solid 1px;
   background-color: black;
   font-size: 1rem;
   font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -103,12 +112,19 @@
     font-size: 1.3rem;
   }
   .cta-button{
-    width: 100%;
+    width: min(100%, 20rem);
     font-size: 0.9rem;
+    padding: 0.9rem 1.25rem;
   }
   .trusted-description{
     font-size: 0.9rem;  
     text-align: left;
   }
   
+}
+
+@media (max-width: 480px) {
+  .cta-button {
+    width: 100%;
+  }
 }
