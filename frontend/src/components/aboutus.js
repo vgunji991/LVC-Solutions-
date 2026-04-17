@@ -102,7 +102,7 @@ const AboutUs = () => {
       </div>
       <div className="section2aboutus">
         <p className="section2-aboutus bg-black text-white">
-          LVC Solutions LLC is a U.S.-registered technology company and an
+          LVC Solutions is a U.S.-registered technology company and an
           active entity on SAM.gov (System for Award Management). Our
           registration confirms that we meet federal compliance standards and
           are eligible to work on U.S. government contracts and public sector
