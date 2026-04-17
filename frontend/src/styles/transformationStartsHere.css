@@ -71,6 +71,13 @@
   background: linear-gradient(to bottom, transparent, #d4af37, transparent);
 }
 
+.section-cta-divider {
+  width: min(92%, 1100px);
+  height: 1px;
+  margin: 0 auto 2rem;
+  background: linear-gradient(to right, transparent, #d4af37, transparent);
+}
+
 .cta-primary-btn {
   background: transparent;
   border: 2px solid #ffffff;   
@@ -150,6 +157,11 @@
     width: 100%;
     height: 1px;
     background: linear-gradient(to right, transparent, #d4af37, transparent);
+  }
+
+  .section-cta-divider {
+    width: min(92%, 100%);
+    margin: 0 auto 1.5rem;
   }
 
   .cta-right {
