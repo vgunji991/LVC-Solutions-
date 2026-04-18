@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Industries from "./industriesWeServe.js";
+import "../styles/transformationStartsHere.css";
 
 const ServiceLandingPage = () => {
 
@@ -20,10 +21,12 @@ const ServiceLandingPage = () => {
 
   return (
     <>
+      <div className="cta-divider section-cta-divider"></div>
       <h1 className="industries-we-serve-title">Industries we serve</h1>
       <Industries />
 
       <div className="container py-5">
+        <div className="cta-divider section-cta-divider"></div>
         <h1 className="services-herotitle">Services We Offer</h1>
 
         <div className="row">

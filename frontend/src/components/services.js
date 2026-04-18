@@ -163,12 +163,13 @@ const Home = () => {
         </div>
       </div>
 
-
+      <div className="cta-divider section-cta-divider"></div>
       <h1 className="industries-we-serve-title">Industries we serve</h1>
       <Industries />
 
 
       <div className="container py-5">
+        <div className="cta-divider section-cta-divider"></div>
         <h1 className="services-herotitle">Services We Offer</h1>
         <div className="row ">
           {/* Show first 4 images */}

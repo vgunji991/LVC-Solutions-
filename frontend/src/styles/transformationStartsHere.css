@@ -39,7 +39,7 @@
 }
 
 .cta-right {
-  flex: 1 1 30%;
+  /* flex: 1 1 30%; */
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -69,6 +69,13 @@
 .cta-divider {
   width: 1px;
   background: linear-gradient(to bottom, transparent, #d4af37, transparent);
+}
+
+.section-cta-divider {
+  width: min(92%, 1100px);
+  height: 1px;
+  margin: 0 auto 2rem;
+  background: linear-gradient(to right, transparent, #d4af37, transparent);
 }
 
 .cta-primary-btn {
@@ -152,6 +159,11 @@
     background: linear-gradient(to right, transparent, #d4af37, transparent);
   }
 
+  .section-cta-divider {
+    width: min(92%, 100%);
+    margin: 0 auto 1.5rem;
+  }
+
   .cta-right {
     align-items: flex-start;
   }
@@ -186,7 +198,7 @@
   .cta-secondary-btn {
     flex: 1;
     width: 9rem;
-    padding: 14px;
+    padding: 12px;
     font-size: 0.9rem;
     font-weight: bold;
   }
