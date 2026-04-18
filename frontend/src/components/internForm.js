@@ -433,7 +433,7 @@ const InternForm = () => {
               />
               {errors.pinCode && <p className="error">{errors.pinCode}</p>}
 
-              <div className="consent-section">
+              <div className="consent-section" style={{ marginBottom: "20px" }}>
                 <label className="checkbox-label">
                   <input
                     type="checkbox"
@@ -489,17 +489,17 @@ const InternForm = () => {
           <div className="msf-success" style={{ textAlign: "justify", padding: "10px" }}>
             <div className="msf-success-check" style={{ fontSize: "40px", color: "#22c55e", marginBottom: "20px" }}>✓</div>
             {/* <h2 style={{ color: "white" }}>Success!</h2> */}
-            <p style={{ color: "#8b949e" }}>Thanks for submitting your application!</p>
-            <p style={{ color: "#8b949e" }}>Your application has been received successfully.</p>
-            <p style={{ color: "#8b949e" }}>Our team will connect with you shortly and share the next steps along with the payment link via email.</p>
-            <p style={{ color: "#8b949e" }}>Please keep an eye on your inbox (and <span style={{ color: "#ff0000" }}>spam folder</span> just in case).</p>
+            <p style={{ color: "#8b949e" ,fontSize: "13px"}}><span style={{ fontWeight: "bold" }}>Thanks</span> for submitting your application!</p>
+            <p style={{ color: "#8b949e" ,fontSize: "13px"}}>Your application has been received successfully.</p>
+            <p style={{ color: "#8b949e" ,fontSize: "13px"}}>Our team will connect with you shortly and share the next steps along with the payment link via email.</p>
             <button 
               className="msf-btn-primary" 
-              style={{ marginTop: "30px", backgroundColor: "#6c757d" }}
+              style={{ marginTop: "20px", backgroundColor: "#6c757d" ,marginBottom: "20px"}}
               onClick={() => window.location.href = "/"}
             >
               Back to Home
             </button>
+            <p style={{ color: "#ecec05",fontSize: "13px"}}>Please keep an eye on your spam folder</p>
           </div>
         )}
         <MemoizedDisclaimer />
