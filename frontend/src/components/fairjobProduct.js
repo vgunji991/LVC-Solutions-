@@ -3,14 +3,11 @@ import FairJobCarousel from './fairJobCarousel.js';
 
 const FairjobProduct = () => {
   return (
-       <main className="page-home" style={{ padding: '20px', marginTop: '80px' }}>
-        {/* <div className="carsouelheight">
-          <CarouselComponent />
-        </div> */}
-        <section>
-          <h1 style={{ color: 'white', fontSize: 'clamp(30px, 2.5vmax, 60px)' }}>
+       <main className="page-home product-page-shell" style={{ padding: '20px', marginTop: '80px' }}>
+        <section className='bg-black product-hero-section'>
+          <h1 className='product-title product-hero-title' style={{ color: 'white', }}>
               LVC Fair Job Portal <br/>
-            <strong style={{ color: 'white' }}>
+            <strong className='product-text product-hero-subtitle' style={{ color: 'white' }}>
               The World's First Scam-Free Job Portal
             </strong>
           </h1>

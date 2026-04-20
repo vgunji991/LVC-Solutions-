@@ -10,21 +10,17 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import ApplicationForm from "./applicationform.js";
+import FullTimeRoles from "./FullTimeRoles.js";
 
 const Careers = () => {
   const navigate = useNavigate();
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [selectedPosition, setSelectedPosition] = useState("");
+  const selectedPosition = "";
   const openRolesRef = useRef(null);
 
   const handleNavigation = (path) => {
     navigate(path);
     window.scrollTo(0, 0);
-  };
-
-  const handleApplyClick = (position) => {
-    setSelectedPosition(position);
-    setIsFormOpen(true);
   };
 
   const scrollToOpenRoles = () => {
@@ -43,7 +39,7 @@ const Careers = () => {
             <p className="careers-subtitle">Careers</p>
             <hr className="underline" />
             <h1 className="careers-title">Join Our Team</h1>
-            <p className="mb-4" style={{ color: "#f1f1f1" }}>
+            <p className="mb-4 fulltime-heading-text" style={{ color: "#f1f1f1" }}>
               We're building an amazing team of talented individuals. Check back
               soon for exciting career opportunities at LVC Solutions!
             </p>
@@ -399,7 +395,7 @@ const Careers = () => {
           </SwiperSlide>
         </Swiper>
       </div>
-      <div className="tab-section" ref={openRolesRef}>
+      {/* <div className="tab-section" ref={openRolesRef}>
         <h1>Open Roles</h1>
         <ul className="nav nav-pills mb-3" id="roles-tab" role="tablist">
           <li className="nav-item" role="presentation">
@@ -571,7 +567,7 @@ const Careers = () => {
             </div>
           </div>
 
-          {/* Backend Developer */}
+          
           <div
             className="tab-pane fade"
             id="backend"
@@ -648,7 +644,7 @@ const Careers = () => {
             </div>
           </div>
 
-          {/* Full Stack Developer */}
+          
           <div
             className="tab-pane fade"
             id="fullstack"
@@ -687,7 +683,7 @@ const Careers = () => {
             </div>
           </div>
 
-          {/* AI & ML Engineer */}
+         
           <div
             className="tab-pane fade"
             id="ai-ml"
@@ -726,7 +722,7 @@ const Careers = () => {
             </div>
           </div>
 
-          {/* Generative AI Engineer */}
+          
           <div
             className="tab-pane fade"
             id="llm"
@@ -765,7 +761,7 @@ const Careers = () => {
             </div>
           </div>
 
-          {/* AI Agents Developer */}
+          
           <div
             className="tab-pane fade"
             id="ai-agents"
@@ -804,6 +800,9 @@ const Careers = () => {
             </div>
           </div>
         </div>
+      </div> */}
+      <div ref={openRolesRef}>
+        <FullTimeRoles />
       </div>
       <TransformationStartsHere/>
       <Footer />

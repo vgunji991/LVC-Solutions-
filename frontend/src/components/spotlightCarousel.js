@@ -4,22 +4,23 @@ import spotlightLogo from "../assets/spotlight-media.png";
 
 function SpotLightCarousel() {
   return (
-    <Carousel className="gradient-background-color bg-black">
+    <Carousel className="gradient-background-color bg-black product-spotlight-carousel">
 
       {/* SLIDE 1 – HERO */}
       <Carousel.Item className="spotlight-carousel-scroll">
         <img
           alt="background"
           src={ExampleCarouselImage}
+          className="spotlight-carousel-bg"
           style={{ width: "100%", minHeight: "275px", opacity: "0" }}
         />
 
         <Carousel.Caption className="spotlight-carousel-items-container text-center">
-          <h2 style={{ color: "white", fontWeight: "bolder", fontSize: "clamp(30px,2.5vmax,60px)" }}>
+          <h2 className="heading-title" style={{ color: "white", fontWeight: "bolder", fontSize: "clamp(30px,2.5vmax,60px)" }}>
             PR, Branding & Digital Growth
           </h2>
 
-          <p style={{ color: "white", marginTop: "20px", fontSize: "clamp(16px,1.6vmax,28px)" }}>
+          <p  className="fair-text"style={{ color: "white", marginTop: "20px", fontSize: "clamp(16px,1.6vmax,28px)" }}>
             From <b>Forbes features</b> to viral digital campaigns — we help founders, CEOs,
             and startups <b>get seen, trusted, and remembered.</b>
           </p>
@@ -31,11 +32,12 @@ function SpotLightCarousel() {
         <img
           alt="background"
           src={ExampleCarouselImage}
+          className="spotlight-carousel-bg"
           style={{ width: "100%", minHeight: "275px", opacity: "0" }}
         />
 
         <Carousel.Caption className="spotlight-carousel-items-container">
-          <h2 style={{ color: "white", fontWeight: "bolder", fontSize: "clamp(32px,2.5vmax,60px)" }}>
+          <h2  className="heading-title" style={{ color: "white", fontWeight: "bolder", fontSize: "clamp(32px,2.5vmax,60px)" }}>
             Services
           </h2>
 
@@ -43,18 +45,15 @@ function SpotLightCarousel() {
             <div className="spotlight-slide2-container">
               <div className="spotlight-slide2-cards">
                 <h3>PR & Media Features</h3>
-                <ul>
-                  <li>Guaranteed placements in Forbes, Entrepreneur, Yahoo</li>
-                  <li>Global brand credibility</li>
-                </ul>
+                  <p className="fair-text">Guaranteed placements in Forbes, Entrepreneur, Yahoo</p>
+                  <p className="fair-text">Global brand credibility</p>
               </div>
 
               <div className="spotlight-slide2-cards">
                 <h3>Founder Branding</h3>
-                <ul>
-                  <li>CEO storytelling & interviews</li>
-                  <li>LinkedIn & social authority</li>
-                </ul>
+                  <p className="fair-text" >CEO storytelling & interviews</p>
+                  <p className="fair-text" >LinkedIn & social authority</p>
+               
               </div>
             </div>
           </div>
@@ -66,21 +65,22 @@ function SpotLightCarousel() {
         <img
           alt="background"
           src={ExampleCarouselImage}
+          className="spotlight-carousel-bg"
           style={{ width: "100%", minHeight: "275px", opacity: "0" }}
         />
 
         <Carousel.Caption className="spotlight-carousel-items-container">
-          <h2 style={{ color: "white", fontWeight: "bolder", fontSize: "clamp(32px,2.5vmax,60px)" }}>
+          <h2 className="lvc-heading" style={{ color: "white", fontWeight: "bolder", fontSize: "clamp(32px,2.5vmax,60px)" }}>
             Why Choose LVC Spotlight Media?
           </h2>
 
-          <ul className="ul-list-padding-carousel">
-            <li>Founder-first PR & branding approach</li>
-            <li>Guaranteed media features</li>
-            <li>PR + Digital Growth combined</li>
-            <li>Startup & SaaS focused execution</li>
-            <li>Affordable, scalable packages</li>
-          </ul>
+          <div className="ul-list-padding-carousel">
+            <p className="fair-text">Founder-first PR & branding approach</p>
+            <p className="fair-text">Guaranteed media features</p>
+            <p className="fair-text">PR + Digital Growth combined</p>
+            <p className="fair-text">Startup & SaaS focused execution</p>
+            <p className="fair-text">Affordable, scalable packages</p>
+          </div>
         </Carousel.Caption>
       </Carousel.Item>
 
@@ -89,15 +89,16 @@ function SpotLightCarousel() {
         <img
           alt="background"
           src={ExampleCarouselImage}
+          className="spotlight-carousel-bg"
           style={{ width: "100%", minHeight: "275px", opacity: "0" }}
         />
 
         <Carousel.Caption className="spotlight-carousel-items-container">
-          <h2 style={{ color: "white", fontWeight: "bolder", fontSize: "clamp(32px,2.5vmax,60px)" }}>
+          <h2 className="heading-title" style={{ color: "white", fontWeight: "bolder", fontSize: "clamp(32px,2.5vmax,60px)" }}>
             Competitor Comparison
           </h2>
 
-          <p style={{ color: "white", fontSize: "clamp(14px,1vmax,22px)" }}>
+          <p  className="fair-text" style={{ color: "white", fontSize: "clamp(14px,1vmax,22px)" }}>
             Why LVC Spotlight Media Beats the Rest
           </p>
 
@@ -173,6 +174,7 @@ function SpotLightCarousel() {
         <img
           alt="background"
           src={ExampleCarouselImage}
+          className="spotlight-carousel-bg"
           style={{ width: "100%", minHeight: "275px", opacity: "0" }}
         />
 

@@ -4,7 +4,8 @@ import "../style.css";
 import TransformationStartsHere from "./transformationStartsHere.js";
 import ServiceLandingPage from "./serviceLandingPage.js";
 import Footer from "./footer.js";
-
+import TrustedSection from "./trustedSection.js";
+ 
 const Home = () => {
   return (
     <>
@@ -225,6 +226,7 @@ const Home = () => {
           </div>
         </div> */}
 
+        <TrustedSection />
         <ServiceLandingPage/>
         <TransformationStartsHere />
         {/* <WithYouForLong/> */}

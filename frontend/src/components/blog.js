@@ -105,8 +105,8 @@ function BlogPage() {
   const images = [
     {
       src: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1771&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      alt: "Website Maintenance and Support",
-      title: "Website Maintenance and Support",
+      alt: "Website Maintenance & Support",
+      title: "Website Maintenance & Support",
     },
     {
       src: "https://images.unsplash.com/photo-1726066012699-1c843dad5fd8?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -206,7 +206,7 @@ function BlogPage() {
             <p className="blog-subtitle">Blog</p>
             <hr className="underline" />
             <h1 className="blog-title" style={{fontSize:"48px"}}>LVC Solutions Blog</h1>
-            <h5>Insights, updates, and ideas from our team.</h5>
+            <h5 className='blog-description'>Insights, updates, and ideas from our team.</h5>
           </div>
         </div>
       </div>
@@ -223,11 +223,11 @@ function BlogPage() {
               <Link style={{ textDecoration: 'none', color: 'black' }} to={'/blog/' + post.id} state={{ post, image: images[post.id - 1] }}>
                 <img className='blog-posts-imgs' src={images[post.id - 1].src} alt={images[post.id - 1].alt} />
                 <h2 className='text-white'>{post.title}</h2>
-                <small className='text-white'>{post.date}</small>
+                <small className='text-white  blog-date'>{post.date}</small>
                 {post.content.length > 110 ? (
-                  <p>{post.content.slice(0,110)}... <br/><b style={{color:'light black'}}>Read more</b></p>
+                  <p className='blog-desc'>{post.content.slice(0,110)}... <br/><b style={{color:'light black'}}>Read more</b></p>
                 ) : (
-                  <p>{post.content}</p>
+                  <p className='blog-desc'>{post.content}</p>
                 )}
               </Link>
             </article>

@@ -138,6 +138,28 @@ useEffect(() => {
     }
   });
 }, []);
+
+  useEffect(() => {
+    const Bootstrap = window.bootstrap;
+    if (!Bootstrap) return;
+
+    const nav = document.getElementById("navbarNav");
+    const itServicesDropdown = document.getElementById("itServicesDropdown");
+    const careersDropdown = document.getElementById("careersDropdown");
+
+    if (itServicesDropdown) {
+      Bootstrap.Dropdown.getOrCreateInstance(itServicesDropdown).hide();
+    }
+
+    if (careersDropdown) {
+      Bootstrap.Dropdown.getOrCreateInstance(careersDropdown).hide();
+    }
+
+    if (nav) {
+      Bootstrap.Collapse.getOrCreateInstance(nav, { toggle: false }).hide();
+    }
+  }, [location]);
+
   return (
     <header>
       {/* search bar modal, needs to be up top so it doesn't have any interference when appearing*/}
@@ -156,7 +178,7 @@ useEffect(() => {
           >
             {/* <div className="modal-body"> */}
             {/* <div className="search-bar-container"> */}
-            <div className="search-bar-wrapper">
+            <div className="search-bar-wrapper bg-black">
               <img
                 className="img-in-search-bar"
                 alt="interactive search logo"
@@ -164,7 +186,7 @@ useEffect(() => {
               />
 
               <input
-                className="search-bar"
+                className="search-bar bg-black"
                 ref={inputRef}
                 style={{outline:"none",border:"none",color:"white",fontSize:"18px",}}
                 type="text"
