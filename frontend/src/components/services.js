@@ -95,18 +95,18 @@ const Home = () => {
           <div className="col-md-6 text-section" ref={textRef} style={{ paddingRight: "25px" }}>
             <h2 className="mb-4 header-1-clamp">What We Offer</h2>
             <h3 className="header-2-clamp">Design Development</h3>
-            <p className="paragraph-clamp">
+            <p className="paragraph-clamp text-white">
               Whether you're a start-up aiming to establish your digital
               presence or a growing enterprise seeking to elevate your brand,
               we’re here to support your journey. You’ve found a partner
               dedicated to your success, with the expertise to deliver real
               results.
             </p>
-            <p style={{ fontSize: 'clamp(10px, 1.5vmax, 80px)' }}>
+            <p  className="paragraph-clamp text-white" style={{ fontSize: 'clamp(10px, 1.5vmax, 80px)' }}>
               Over the past 5 years, we’ve worked with countless clients,
               helping them achieve measurable growth and lasting impact.
             </p>
-            <p style={{ fontSize: 'clamp(10px, 1.5vmax, 80px)' }}>
+            <p className="paragraph-clamp text-white" style={{ fontSize: 'clamp(10px, 1.5vmax, 80px)' }}>
               <strong>
                 Results, innovation, and growth are what we strive to bring to
                 every project.
