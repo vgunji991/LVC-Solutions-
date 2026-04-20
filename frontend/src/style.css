@@ -2181,6 +2181,7 @@ font-size: 1.75rem !important;
 
   .grid-item-services.text {
     width: 100%;
+    text-align: left;
   }
 }
 
