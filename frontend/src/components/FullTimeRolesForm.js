@@ -938,16 +938,16 @@ const FullTimeRolesForm = () => {
           <div className="msf-success" style={{ textAlign: "center", padding: "20px" }}>
             <div className="msf-success-check" style={{ fontSize: "50px", color: "#22c55e", marginBottom: "20px" }}>✓</div>
             {/* <h2 style={{ color: "white" }}>Success!</h2> */}
-            <p style={{ color: "#8b949e" }}>Thanks for submitting your application!</p>
+            <p style={{ color: "#8b949e" }}><span style={{ fontWeight: "bold" }}>Thanks</span> for submitting your application!</p>
             <p style={{ color: "#8b949e" }}>Your application has been received successfully.</p>
-            <p style={{ color: "#8b949e" }}>Please keep an eye on your inbox (and <span style={{ color: "#ff0000" }}>spam folder</span> just in case).</p>
-            <button 
+            <button
               className="msf-btn-primary" 
-              style={{ marginTop: "30px", backgroundColor: "#6c757d" }}
+              style={{ marginTop: "20px", backgroundColor: "#6c757d",marginBottom: "20px" }}
               onClick={() => window.location.href = "/"}
             >
               Back to Home
             </button>
+            <p style={{ color: "#ecec05"}}>Please keep an eye on your spam folder</p>
           </div>
         )}
 
