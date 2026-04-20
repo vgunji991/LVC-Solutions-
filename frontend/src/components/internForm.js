@@ -186,7 +186,7 @@ const InternForm = () => {
           {step === 1 && "Personal Information"}
           {step === 2 && "Education Information"}
           {step === 3 && "Address Information"}
-          {step === 4 && "Application Submitted"}
+          {/* {step === 4 && "Application Submitted"} */}
         </h2>
         {step === 3 && errors.consent && (
           <p className="error">{errors.consent}</p>
@@ -433,7 +433,7 @@ const InternForm = () => {
               />
               {errors.pinCode && <p className="error">{errors.pinCode}</p>}
 
-              <div className="consent-section">
+              <div className="consent-section" style={{ marginBottom: "20px" }}>
                 <label className="checkbox-label">
                   <input
                     type="checkbox"
@@ -486,18 +486,20 @@ const InternForm = () => {
           )}
         </form>
         {step === 4 && (
-          <div className="msf-success" style={{ textAlign: "center", padding: "20px" }}>
-            <div className="msf-success-check" style={{ fontSize: "50px", color: "#22c55e", marginBottom: "20px" }}>✓</div>
-            <h2 style={{ color: "white" }}>Success!</h2>
-            <p style={{ color: "#8b949e" }}>Your internship application has been submitted successfully.</p>
-            <p style={{ color: "#8b949e" }}>Our team member will contact you soon.</p>
+          <div className="msf-success" style={{ textAlign: "justify", padding: "10px" }}>
+            <div className="msf-success-check" style={{ fontSize: "40px", color: "#22c55e", marginBottom: "20px" }}>✓</div>
+            {/* <h2 style={{ color: "white" }}>Success!</h2> */}
+            <p style={{ color: "#8b949e" ,fontSize: "13px"}}><span style={{ fontWeight: "bold" }}>Thanks</span> for submitting your application!</p>
+            <p style={{ color: "#8b949e" ,fontSize: "13px"}}>Your application has been received successfully.</p>
+            <p style={{ color: "#8b949e" ,fontSize: "13px"}}>Our team will connect with you shortly and share the next steps along with the payment link via email.</p>
             <button 
               className="msf-btn-primary" 
-              style={{ marginTop: "30px", backgroundColor: "#7c3aed" }}
+              style={{ marginTop: "20px", backgroundColor: "#6c757d" ,marginBottom: "20px"}}
               onClick={() => window.location.href = "/"}
             >
               Back to Home
             </button>
+            <p style={{ color: "#ecec05",fontSize: "13px"}}>Please keep an eye on your spam folder</p>
           </div>
         )}
         <MemoizedDisclaimer />

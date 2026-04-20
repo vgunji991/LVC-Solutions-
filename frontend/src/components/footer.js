@@ -190,8 +190,7 @@ export default function Footer() {
             </a>
           ))}
         </div>
-
-        <p className="text-center mb-0">
+        <p className="text-center mb-0" style={{ color: "#ffffff", fontWeight: "bold" }}>
           SAM.gov Registered | CAGE Code Verified | U.S. State & Federal Vendor
         </p>
 
