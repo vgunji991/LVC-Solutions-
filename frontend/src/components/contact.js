@@ -86,6 +86,7 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   className="bg-black"
+                  style={{ color: "white" }}
                   required
                 ></textarea>
               </div>

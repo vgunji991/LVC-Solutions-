@@ -19,7 +19,7 @@ const TrustedSection = () => {
           <p className="trusted-subtitle">Trusted. Verified. Contract-Ready.</p>
           <h2 className="trusted-title">Built for Enterprise. Verified for Government.</h2>
           <p className="trusted-description">
-            LVC Solutions LLC is an active SAM.gov registered company with a verified CAGE Code, enabling us
+            LVC Solutions is an active SAM.gov registered company with a verified CAGE Code, enabling us
             to deliver secure, compliant, and scalable AI and software solutions for both commercial and U.S.
             government clients.
           </p>
