@@ -3,47 +3,49 @@ import "./ourEmployees.css";
 const employees = [
   {
     id: 1,
-    image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400",
+    image: "/employee_pics/Venkat_ceo.jpeg", 
     name: "Venkat Gunji",
     position: "CEO",
-    Role:"Founder",
+    Role: "Founder",
   },
   {
     id: 2,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400",
-    name: "Sarah",
-    position: "CTO",
-    Role:"Co-Founder",
+    image: "/employee_pics/teja.jpg", 
+    name: "Teja",
+    position: "Intern",
+    Role: "Full Stack Developer",
   },
   {
     id: 3,
-    image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400",
-    name: "David",
-    position: "Software Engineer",
-    Role:"Team Member",
+    image: "/employee_pics/vamshi.jpeg",
+    name: "A Bhanu Vamshi",
+    position: "Intern",
+    Role: "Full Stack Developer",
   },
+  
   {
     id: 4,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
-    name: "Emma",
-    position: "Marketing Manager",
-    Role:"Team Member",
-  },
-   {
+    image: "/employee_pics/chandan.jpeg", 
+    name: "T.K.Chandan",
+    position: "Intern",
+    Role: "Full Stack Developer",
+  }
+  ,
+  {
     id: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400",
-    name: "Watson",
-    position: "Marketing Manager",
-    Role:"Team Member",
-  },
+    image: "/employee_pics/chakresh.jpeg", 
+    name: "Chakresh",
+    position: "Intern",
+    Role: "Full Stack Developer",
+  }
 ];
 
 const OurEmployees = () => {
   return (
     <div className="our-employees">
-      <h2 style={{color:'white'}}>Our Employees</h2>
+      <h2 style={{ color: "white" }}>Our Employees</h2>
 
-      <p style={{color:'white'}}>
+      <p style={{ color: "white" }}>
         Meet the dedicated team behind our success. Our employees are the
         heart of our company, bringing passion, expertise, and commitment to
         every project.
