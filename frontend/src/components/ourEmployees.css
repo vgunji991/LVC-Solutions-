@@ -21,11 +21,11 @@
 .employee-card {
   width: 240px;
   min-width: 240px;
-  background: white;
+  background: black;
   border-radius: 15px;
   padding: 25px 20px;
   text-align: center;
-  color: black;
+  color: white;
 }
 
 .employee-card img {
