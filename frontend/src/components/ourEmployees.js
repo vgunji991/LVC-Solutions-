@@ -35,7 +35,40 @@ const employees = [
     name: "Chakresh",
    position: "Full Stack Intern",
    
+  },
+
+  {
+    id: 6,
+    image: "/employee_pics/rakesh.jpeg", 
+    name: "Rakesh  kumar",
+     position: "Full Stack Intern",
+  },
+
+   {
+    id: 7,
+    image: "/employee_pics/yasaswini.jpeg", 
+    name: "Nagallaa yasaswini",
+     position: "Full Stack Intern",
+  },
+
+  {
+    id: 8,
+    image: "/employee_pics/janardhan.jpeg", 
+    name: "S.Janardhan",
+     position: "Full Stack Intern",
+  },
+
+
+  {
+    id: 9,
+    image: "/employee_pics/tejaswini.jpeg", 
+    name: "N.Tejaswini",
+     position: "Full Stack Intern",
   }
+
+
+  
+  
 ];
 
 const OurEmployees = () => {
