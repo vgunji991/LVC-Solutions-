@@ -84,7 +84,11 @@ const AboutUs = () => {
       <div className="About-section-herobanner">
         <div className="whatwedo-container">
           <div className="whatwedo-content">
-            <p className="whatwedo-subtitle">About Us</p>
+            <p className="whatwedo-subtitle"
+            style={{ fontSize: "35px" }}
+            >
+              About Us
+            </p>
             <hr className="underline" />
             <h1
               className="whatwedo-title aboutus-mobile-hero-title"

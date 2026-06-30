@@ -36,7 +36,9 @@ const Careers = () => {
 
         <div className="careers-container">
           <div className="careers-content">
-            <p className="careers-subtitle">Careers</p>
+            <p className="careers-subtitle"
+            style={{ fontSize: "35px" }}
+            >Careers</p>
             <hr className="underline" />
             <h1 className="careers-title">Join Our Team</h1>
             <p className="mb-4 fulltime-heading-text" style={{ color: "#f1f1f1" }}>

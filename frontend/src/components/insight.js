@@ -108,7 +108,9 @@ const Insight = () => {
       <div className="insight-section-herobanner">
         <div className="insight-container">
           <div className="insight-content">
-            <p className="insight-subtitle">Insight</p>
+            <p className="insight-subtitle"
+            style={{ fontSize: "35px" }}
+            >Insight</p>
             <hr className="underline" />
             <h1 className="insight-title">Where Ideas Meet Action</h1>
             <h5 className="heading-text">Insights that shape the future.</h5>

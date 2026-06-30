@@ -1129,7 +1129,7 @@ p {
   font-style: normal;
   font-size: 1.75rem;
   /* line-height: 4rem; */
-  color: #141111;
+  color: #fff;
   margin-bottom: 2pc;
   width: 75%;
 }
@@ -2856,7 +2856,7 @@ font-size: 1.75rem !important;
   color: white;
 }
 
-.modal-close-btn {
+/* .modal-close-btn {
   position: absolute;
   top: 1rem;
   right: 1rem;
@@ -2866,7 +2866,31 @@ font-size: 1.75rem !important;
   font-size: 1.5rem;
   cursor: pointer;
   padding: 0.5rem;
+} */
+
+.modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 99999;
 }
+
+.modal-close-btn:hover {
+  background: #d4af37;
+  color: #000;
+}
+
+
+
 
 .modal-image img {
   width: 100%;
@@ -4431,3 +4455,26 @@ main:not(.page-home) > section.py-5::after {
   color: #ffffff;
 }
 
+
+
+
+
+
+
+/* 
+.modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.modal-close-btn:hover {
+  color: #d4af37;
+} */

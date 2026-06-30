@@ -248,7 +248,9 @@ function BlogPage() {
       <div className='blog-section-herobanner'>
         <div className='blog-container'>
           <div className='blog-content'>
-            <p className="blog-subtitle">Blog</p>
+            <p className="blog-subtitle"
+            style={{ fontSize: "35px" }}
+            >Blog</p>
             <hr className="underline" />
             <h1 className="blog-title" style={{fontSize:"48px"}}>LVC Solutions Blog</h1>
             <h5 className='blog-description'>Insights, updates, and ideas from our team.</h5>
@@ -289,7 +291,7 @@ function BlogPage() {
             </article>
           ))}
         </div>
-        <div className='blog-arrows'>
+        {/* <div className='blog-arrows'>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="50" height="50"
@@ -312,7 +314,7 @@ function BlogPage() {
           >
             <path fillRule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8" />
           </svg>
-        </div>
+        </div> */}
       </div>
       <Footer />
     </main >

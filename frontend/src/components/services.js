@@ -62,7 +62,9 @@ const Home = () => {
       <div className="services-section-herobanner">
         <div className="services-container">
             <div className="services-content">
-                <p className="services-subtitle">IT Services</p>
+                <p className="services-subtitle"
+                style={{ fontSize: "35px" }}
+                >IT Services</p>
                 <hr className="underline" />
                 <h1 className="services-title" style={{fontSize:"48px"}} >Our Services</h1>
                 <p className="mb-4" style={{ color: "#f1f1f1"}}>

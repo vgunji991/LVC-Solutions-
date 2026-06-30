@@ -426,7 +426,9 @@ const Projects = () => {
       <div className="projects-section-herobanner">
         <div className="projects-container">
           <div className="projects-content">
-            <p className="projects-subtitle">Projects</p>
+            <p className="projects-subtitle"
+            style={{ fontSize: "35px" }}
+            >Projects</p>
             <hr className="underline" />
             <h1 className="projects-title" style={{fontSize:"48px"}}>Our Projects</h1>
             <p className="mb-4 project-desc" style={{ color: "#f1f1f1" }}>

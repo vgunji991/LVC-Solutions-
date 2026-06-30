@@ -1,4 +1,5 @@
-import { FaLinkedinIn, FaInstagram, FaTwitter } from "react-icons/fa";
+import { FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export const socialLinks = [
   {
@@ -11,11 +12,16 @@ export const socialLinks = [
     icon: FaInstagram,
     url: "https://www.instagram.com/lvcsolutions?igsh=Y2Y4OG92eDlnNmh4&utm_source=qr",
   },
+  // {
+  //   label: "Twitter",
+  //   icon: FaTwitter,
+  //   url: "https://x.com/lvcsolutions?s=21",
+  // },
   {
-    label: "Twitter",
-    icon: FaTwitter,
-    url: "https://x.com/lvcsolutions?s=21",
-  },
+  label: "X",
+  icon: FaXTwitter,
+  url: "https://x.com/lvcsolutions?s=21",
+},
 ];
 
 export const quickLink = [
