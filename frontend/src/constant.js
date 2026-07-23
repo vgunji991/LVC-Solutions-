@@ -20,6 +20,7 @@ export const socialLinks = [
 
 export const quickLink = [
   { name: "About", href: "#WhyDifferentSection" },
+  
   { 
     name: "LVC Sportlight Media", 
     href: "https://lvcspotlightmedia.com/", 
@@ -39,8 +40,15 @@ export const quickLink = [
 ];
 
 export const address = `
+14114 Dallas Pkwy, Suite 500B,
+Dallas, TX 75254
+
 5015 Addison Circle,
 Addison, TX 75001, USA
 
 228 Hamilton Ave, 3rd Floor,
-Palo Alto, CA 94301, USA`;
+Palo Alto, CA 94301, USA
+
+Unit No 203, 2nd Floor Suite #749, SBR CV Towers,
+Sector-1, Sy No 64, HUDA Techno Enclave, Madhapur,
+Hyderabad - 500081 `;
