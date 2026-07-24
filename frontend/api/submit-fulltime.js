@@ -57,6 +57,7 @@ module.exports = async function handler(req, res) {
       body: JSON.stringify(scriptPayload),
     });
 
+
     if (!scriptResponse.ok) {
       const errorText = await scriptResponse.text();
       return res.status(502).json({ message: `Apps Script error: ${errorText}` });
