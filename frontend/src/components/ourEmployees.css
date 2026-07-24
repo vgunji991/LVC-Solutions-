@@ -13,9 +13,9 @@
 
 .slide-track {
   display: flex;
-  gap: 20px;
+  gap: 0;
   width: max-content;
-  animation: scroll 20s linear infinite;
+  animation: scroll 85s linear infinite;
 }
 
 .employee-card {
