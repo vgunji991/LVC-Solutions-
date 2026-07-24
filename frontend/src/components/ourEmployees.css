@@ -1,0 +1,55 @@
+.our-employees {
+  width: 100%;
+  padding: 60px 20px;
+  background: black;
+  text-align: center;
+}
+
+.slider {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 30px;
+}
+
+.slide-track {
+  display: flex;
+  gap: 0;
+  width: max-content;
+  animation: scroll 85s linear infinite;
+}
+
+.employee-card {
+  width: 240px;
+  min-width: 240px;
+  background: black;
+  border-radius: 15px;
+  padding: 25px 20px;
+  text-align: center;
+  color: white;
+}
+
+.employee-card img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;      
+  object-fit: cover;       
+  object-position: center;
+  display: block;
+  margin: 0 auto 15px;
+  border: 4px solid #fff;  
+}
+
+.employee-card h4 {
+  margin: 8px 0;
+  font-weight: 500;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
