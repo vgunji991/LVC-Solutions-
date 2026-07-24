@@ -2,23 +2,26 @@ import Carousel from "react-bootstrap/Carousel";
 
 function AcademyCarousel() {
   return (
-    <Carousel className="academy-carousel gradient-background-color bg-black">
+    <Carousel className="academy-carousel gradient-background-color bg-black product-academy-carousel">
 
       {/* SLIDE 1 — THE REAL PROBLEM vs HOW WE FIX IT */}
       <Carousel.Item>
-        <div className="p-5" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem" }}>
+        <div
+          className="p-5 academy-slide academy-slide-split"
+          style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "3rem" }}
+        >
           
           {/* LEFT */}
           <div>
-            <h5 style={{ color: "#d4af37", letterSpacing: "3px" }}>THE REAL PROBLEM</h5>
-            <h2 style={{ color: "white", marginTop: "12px" }}>
+            <h5 className="academy-heading"style={{ color: "#d4af37", letterSpacing: "3px" }}>THE REAL PROBLEM</h5>
+            <h2 className="heading-below-text" style={{ color: "white", marginTop: "12px" }}>
               The job search problem no one talks about.
             </h2>
           
 
-            <div className="mt-4 p-4" style={{ border: "1px solid #3a7bd5", borderRadius: "14px" }}>
+            <div className="mt-4 p-4 academy-info-card" style={{ border: "1px solid white", borderRadius: "14px" }}>
               <h6 style={{ color: "#d4af37" }}>PAIN · CONFUSION</h6>
-              <ul style={{ color: "white", marginTop: "12px" }}>
+              <ul  className="text-list" style={{ color: "white", marginTop: "12px" }}>
                 <li>100+ applications, zero responses</li>
                 <li>No structure or roadmap</li>
                 <li>Weak resume & LinkedIn</li>
@@ -32,13 +35,13 @@ function AcademyCarousel() {
           {/* RIGHT */}
           <div>
             <h5 style={{ color: "#d4af37", letterSpacing: "3px" }}>HOW WE FIX IT</h5>
-            <h2 style={{ color: "white", marginTop: "12px" }}>
+            <h2  className="heading-below-text" style={{ color: "white", marginTop: "12px" }}>
               LVC 360° replaces struggle with a professional engine.
             </h2>
 
-            <div className="mt-4 p-4" style={{ border: "1px solid #3a7bd5", borderRadius: "14px" }}>
+            <div className="mt-4 p-4 academy-info-card" style={{ border: "1px solid white", borderRadius: "14px" }}>
               <h6 style={{ color: "#d4af37" }}>CLARITY · SUPPORT</h6>
-              <ul style={{ color: "white", marginTop: "12px" }}>
+              <ul className="text-list" style={{ color: "white", marginTop: "12px" }}>
                 <li>Daily structured job marketing by LVC team</li>
                 <li>Clear 360° roadmap from application to offer</li>
                 <li>Premium resume & LinkedIn branding </li>
@@ -53,11 +56,11 @@ function AcademyCarousel() {
 
       {/* SLIDE 2 — WHY LVC 360 IS DIFFERENT */}
       <Carousel.Item>
-        <div className="p-5 text-center">
-          <h5 style={{ color: "#d4af37", letterSpacing: "3px" }}>
+        <div className="p-5 text-center academy-slide">
+          <h5 className="academy-heading"  style={{ color: "#d4af37", letterSpacing: "3px" }}>
             WHY LVC 360° IS DIFFERENT
           </h5>
-          <h2 style={{ color: "white", marginTop: "16px" }}>
+          <h2  className="heading-below-text" style={{ color: "white", marginTop: "16px" }}>
             Not another consultancy. A managed career engine.
           </h2>
           <p style={{ color: "#cfcfcf", maxWidth: "900px", margin: "16px auto" }}>
@@ -66,6 +69,7 @@ function AcademyCarousel() {
           </p>
 
           <div
+            className="academy-card-grid academy-card-grid-three"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
@@ -83,8 +87,9 @@ function AcademyCarousel() {
             ].map(([title, desc]) => (
               <div
                 key={title}
+                className="academy-info-card "
                 style={{
-                  border: "1px solid #3a7bd5",
+                  border: "1px solid white",
                   borderRadius: "14px",
                   padding: "1.5rem",
                   color: "white",
@@ -101,15 +106,16 @@ function AcademyCarousel() {
 
       {/* SLIDE 3 — WHO IS THIS PROGRAM FOR */}
       <Carousel.Item>
-        <div className="p-5 text-center">
-          <h5 style={{ color: "#d4af37", letterSpacing: "3px" }}>
+        <div className="p-5 text-center academy-slide">
+          <h5  className="academy-heading" style={{ color: "#d4af37", letterSpacing: "3px" }}>
             WHO IS THIS PROGRAM FOR?
           </h5>
-          <p style={{ color: "#cfcfcf", marginTop: "12px" }}>
+          <p className="heading-below-text" style={{ color: "#cfcfcf", marginTop: "12px" }}>
             Built for ambitious people who want real change and real offers.
           </p>
 
           <div
+            className="academy-card-grid academy-card-grid-three"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(3, 1fr)",
@@ -129,8 +135,9 @@ function AcademyCarousel() {
             ].map((item) => (
               <div
                 key={item}
+                className="academy-info-card"
                 style={{
-                  border: "1px solid #3a7bd5",
+                  border: "1px solid white",
                   borderRadius: "14px",
                   padding: "1.5rem",
                   color: "white",
@@ -146,15 +153,16 @@ function AcademyCarousel() {
 
       {/* SLIDE 4 — WHY CHOOSE LVC 360 */}
       <Carousel.Item>
-        <div className="p-5 text-center">
-          <h5 style={{ color: "#d4af37", letterSpacing: "3px" }}>
+        <div className="p-5 text-center academy-slide">
+          <h5  className="academy-heading" style={{ color: "#d4af37", letterSpacing: "3px" }}>
             WHY CHOOSE LVC 360° CAREER PROGRAM?
           </h5>
-          <p style={{ color: "#cfcfcf", marginTop: "12px" }}>
+          <p className="heading-below-text" style={{ color: "#cfcfcf", marginTop: "12px" }}>
             Other institutes teach. We transform careers.
           </p>
 
           <div
+            className="academy-card-grid academy-card-grid-two"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(2, 1fr)",
@@ -176,8 +184,9 @@ function AcademyCarousel() {
             ].map((item) => (
               <div
                 key={item}
+                className="academy-info-card"
                 style={{
-                  border: "1px solid #3a7bd5",
+                  border: "1px solid white",
                   borderRadius: "14px",
                   padding: "1.5rem",
                   color: "white",

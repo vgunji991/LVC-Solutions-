@@ -6,7 +6,7 @@ import intern3 from "../assets/intern3.jpg"
 import intern4 from "../assets/intern4.jpg"
 import intern5 from "../assets/intern5.jpeg"
 import intern6 from "../assets/intern6.jpeg"
-
+ 
 const internImages = [
   intern1,
   intern2,
@@ -36,6 +36,7 @@ const InternshipCard = ({ title, description, fullDescription, image, onApplyCli
         <img
           src={image}
           alt={title}
+          loading="lazy"
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
         <div
@@ -311,8 +312,8 @@ const FullTimeRoles = () => {
         return (
             <>
             <div style={{ marginTop: "30px", padding: "0 40px 20px 40px" }}>
-            <h1 style={{ color: "white" }}>Open Roles</h1>
-            <div className="d-flex gap-4 flex-wrap justify-content-center">
+            <h1 className="role-heading" style={{ color: "white" }}>Open Roles</h1>
+            <div className="d-flex gap-4 flex-wrap justify-content-center ">
                 {internshipData.map((item) => (
                 <InternshipCard
                     key={item.id}

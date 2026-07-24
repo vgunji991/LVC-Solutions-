@@ -19,13 +19,14 @@ const LvcSpotlightProduct = () => {
             style={{ paddingTop: 0, paddingBottom: 0 }}
           >
             <div
-              className="academy-heading-row spotlight-heading-row"
+              className="academy-heading-row spotlight-heading-row product-section-heading"
               style={{ columnGap: "clamp(6px, 1vw, 12px)" }}
             >
-              <div style={{ textAlign: "center", display: "grid" }}>
+              <div className="product-section-logo" style={{ textAlign: "center", display: "grid" }}>
                 <img
                   src={SpotLogo}
                   alt="LVC Spotlight Media Logo"
+                  className="spotlight-section-logo"
                   style={{ maxWidth: "300px", height: "auto" }}
                 />
               </div>
@@ -37,8 +38,8 @@ const LvcSpotlightProduct = () => {
           <div className="spotlight-carousel-container ">
             <SpotLightCarousel />
           </div>
-          <div style={{ textAlign: "center"}} >
-            <p style={{ fontSize: "25px", color: "white" }}>
+          <div className="product-section-footer" style={{ textAlign: "center"}} >
+            <p className="product-section-footnote" style={{ fontSize: "25px", color: "white" }}>
               As Seen In → Forbes | Entrepreneur | Yahoo | TechCrunch | Medium
             </p>
           </div>

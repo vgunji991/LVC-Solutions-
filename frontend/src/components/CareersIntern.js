@@ -46,6 +46,7 @@ const InternshipCard = ({ title, description, fullDescription, image, onApplyCli
         <img
           src={image}
           alt={title}
+          loading="lazy"
           style={{ width: "100%", height: "100%", objectFit: "cover" }}
         />
         <div
@@ -126,7 +127,7 @@ const internshipData = [
       <p style={{ color: "white" }}><strong>Company:</strong>LVC Solutions</p>
       <p style={{ color: "white" }}><strong>Location:</strong> Remote (India)</p>
       <p style={{ color: "white" }}><strong>Internship Type:</strong> Paid Summer Internship</p>
-      <p style={{ color: "white" }}><strong>Duration:</strong> 8 Weeks</p>
+      <p style={{ color: "white" }}><strong>Duration:</strong> 12 Weeks</p>
       <p style={{ color: "white" }}><strong>Start Date:</strong> May / June 2026</p>
       <p style={{ color: "white" }}><strong>Stipend:</strong> Paid (Monthly)</p>
 
@@ -242,7 +243,7 @@ const internshipData = [
       <p style={{ color: "white" }}><strong>Company:</strong> LVC Solutions</p>
       <p style={{ color: "white" }}><strong>Location:</strong> Remote (India)</p>
       <p style={{ color: "white" }}><strong>Internship Type:</strong> Paid Summer Internship</p>
-      <p style={{ color: "white" }}><strong>Duration:</strong> 8 Weeks</p>
+      <p style={{ color: "white" }}><strong>Duration:</strong> 12 Weeks</p>
       <p style={{ color: "white" }}><strong>Start Date:</strong> May / June 2026</p>
       <p style={{ color: "white" }}><strong>Stipend:</strong> Paid (Monthly)</p>
 
@@ -356,6 +357,119 @@ const internshipData = [
     title: "UI/UX Design Intern",
     description: "Design user interfaces and improve user experience.",
     // link: "/careers-intern/uiux",
+    fullDescription: (
+    <div className="internship-container">
+      <p style={{ color: "white" }}><strong>Company:</strong> LVC Solutions</p>
+      <p style={{ color: "white" }}><strong>Location:</strong> Remote (India)</p>
+      <p style={{ color: "white" }}><strong>Internship Type:</strong> Paid Summer Internship</p>
+      <p style={{ color: "white" }}><strong>Duration:</strong> 12 Weeks</p>
+      <p style={{ color: "white" }}><strong>Start Date:</strong> May / June 2026</p>
+      <p style={{ color: "white" }}><strong>Stipend:</strong> Paid (Monthly)</p>
+
+      <h5 style={{ color: "white" }}>About LVC Solutions</h5>
+      <p style={{ color: "white" }}>
+        LVC Solutions is a technology company building 
+        scalable software and AI-driven platforms across
+        recruitment, analytics, and automation. We focus on delivering 
+        intuitive, user-friendly, and highperformance digital experiences 
+        for real-world, production-grade applications.
+      </p>
+
+      <p style={{ color: "white" }}>
+        Our internship program provides hands-on exposure to modern UI/UX design practices by allowing
+        interns to work directly on live products and real user experiences.
+      </p>
+
+      <h5 style={{ color: "white" }}>Role Overview</h5>
+      <p style={{ color: "white" }}>
+        As a UI/UX Designer Intern, you will be responsible for designing user-centric interfaces and
+        improving the overall user experience of web and mobile applications. You will work closely with
+        developers, product teams, and QA engineers to create designs that are both visually appealing and
+        highly functional.
+      </p>
+      <p style={{ color: "white" }}>
+        This is a paid internship designed for students who want practical experience in UI/UX design within
+        a real startup environment.
+      </p>
+
+      <h5 style={{ color: "white" }}>Roles and Responsibilities</h5>
+
+      <h5 style={{ color: "white" }}>UI Design</h5>
+      <ul style={{ color: "white" }}>
+        <li>Design visually appealing and modern user interfaces for web and mobile applications.</li>
+        <li> Create high-fidelity designs using tools such as Figma.</li>
+        <li>Maintain consistency in design elements such as colors, typography, and layouts.</li>
+        <li> Ensure alignment with product branding and design standards.</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>UX Design</h5>
+      <ul style={{ color: "white" }}>
+        <li>Understand product requirements and user behavior.</li>
+        <li>Create wireframes, user flows, and low-fidelity prototypes.</li>
+        <li>Improve usability, accessibility, and overall user experience.</li>
+        <li>Identify friction points and suggest design improvements.</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Prototyping and Design Systems</h5>
+      <ul style={{ color: "white" }}>
+        <li>Build interactive prototypes for feature validation.</li>
+        <li>Assist in developing and maintaining design systems.</li>
+        <li>Ensure consistency across multiple screens and components.</li>
+        <li>Design responsive layouts for different devices.</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Research and Improvement</h5>
+      <ul style={{ color: "white" }}>
+        <li>Conduct basic user research and competitor analysis.</li>
+        <li>Analyze user feedback and improve existing designs.</li>
+        <li>Stay updated with latest UI/UX trends and best practices.</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Eligibility Criteria</h5>
+      <ul style={{ color: "white" }}>
+        <li>B.Tech / B.Des / BCA / MCA / Design-related students</li>
+        <li>Eligible years: 2nd year, 3rd year, and final year students</li>
+        <li>Interest in UI/UX design and product development</li>
+        <li> Ability to commit 40 hours per week during the internship period</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Required Skills</h5>
+      <ul style={{ color: "white" }}>
+        <li>Basic understanding of UI/UX design principles</li>
+        <li>Proficiency in Figma or similar design tools</li>
+        <li>Knowledge of wireframing and prototyping</li>
+        <li>Understanding of design fundamentals (color, typography, layout)</li>
+        <li>Ability to think from a user’s perspective</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Preferred (Not Mandatory)</h5>
+      <ul style={{ color: "white" }}>
+        <li>Experience with design systems</li>
+        <li>Knowledge of responsive design for web and mobile</li>
+        <li>Basic understanding of frontend technologies (HTML, CSS)</li>
+        <li>Exposure to usability testing</li>
+        <li>Experience with personal or academic design projects</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>What You Will Gain</h5>
+      <ul style={{ color: "white" }}>
+        <li>Paid internship with real UI/UX design experience</li>
+        <li>Hands-on exposure to live product design workflows</li>
+        <li>Experience working on real-world applications</li>
+        <li>Mentorship from experienced product and engineering teams</li>
+        <li>Internship certificate and Letter of Recommendation upon successful completion</li>
+        <li>Opportunity for future full-time or extended roles based on business requirements</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Application Process</h5>
+      <ol style={{ color: "white" }}>
+        <li>Online application submission</li>
+        <li>Portfolio review or design task</li>
+        <li>Virtual interview</li>
+        <li>Offer confirmation and onboarding</li>
+      </ol>
+    </div>
+    )
   },
   {
     id: 4,
@@ -368,7 +482,7 @@ const internshipData = [
       <p style={{ color: "white" }}><strong>Company:</strong> LVC Solutions</p>
       <p style={{ color: "white" }}><strong>Location:</strong> Remote (India)</p>
       <p style={{ color: "white" }}><strong>Internship Type:</strong> Paid Summer Internship</p>
-      <p style={{ color: "white" }}><strong>Duration:</strong> 8 Weeks</p>
+      <p style={{ color: "white" }}><strong>Duration:</strong> 12 Weeks</p>
       <p style={{ color: "white" }}><strong>Start Date:</strong> May / June 2026</p>
       <p style={{ color: "white" }}><strong>Stipend:</strong> Paid (Monthly)</p>
 
@@ -408,7 +522,7 @@ const internshipData = [
         <li>Propose process improvements and optimization opportunities.</li>
         <li>Assist in defining end-to-end business and product flows.</li>
       </ul>
-
+ 
       <h5 style={{ color: "white" }}>Documentation</h5>
       <ul style={{ color: "white" }}>
         <li>Prepare Business Requirement Documents (BRDs) and Functional Requirement Documents(FRDs).</li>
@@ -486,7 +600,7 @@ const internshipData = [
       <p style={{ color: "white" }}><strong>Company:</strong> LVC Solutions</p>
       <p style={{ color: "white" }}><strong>Location:</strong> Remote (India)</p>
       <p style={{ color: "white" }}><strong>Internship Type:</strong> Paid Summer Internship</p>
-      <p style={{ color: "white" }}><strong>Duration:</strong> 8 Weeks</p>
+      <p style={{ color: "white" }}><strong>Duration:</strong> 12 Weeks</p>
       <p style={{ color: "white" }}><strong>Start Date:</strong> May / June 2026</p>
       <p style={{ color: "white" }}><strong>Stipend:</strong> Paid (Monthly)</p>
 
@@ -595,7 +709,7 @@ const internshipData = [
       <p style={{ color: "white" }}><strong>Company:</strong> LVC Solutions</p>
       <p style={{ color: "white" }}><strong>Location:</strong> Remote (India)</p>
       <p style={{ color: "white" }}><strong>Internship Type:</strong> Paid Summer Internship</p>
-      <p style={{ color: "white" }}><strong>Duration:</strong> 8 Weeks</p>
+      <p style={{ color: "white" }}><strong>Duration:</strong> 12 Weeks</p>
       <p style={{ color: "white" }}><strong>Start Date:</strong> May / June 2026</p>
       <p style={{ color: "white" }}><strong>Stipend:</strong> Paid (Monthly)</p>
 
@@ -712,7 +826,7 @@ const internshipData = [
       <p style={{ color: "white" }}><strong>Company:</strong> LVC Solutions</p>
       <p style={{ color: "white" }}><strong>Location:</strong> Remote (India)</p>
       <p style={{ color: "white" }}><strong>Internship Type:</strong> Paid Summer Internship</p>
-      <p style={{ color: "white" }}><strong>Duration:</strong> 8 Weeks</p>
+      <p style={{ color: "white" }}><strong>Duration:</strong> 12 Weeks</p>
       <p style={{ color: "white" }}><strong>Start Date:</strong> May / June 2026</p>
       <p style={{ color: "white" }}><strong>Stipend:</strong> Paid (Monthly)</p>
 
@@ -830,8 +944,558 @@ const internshipData = [
     title: "Mobile App Developer Intern",
     description: "Develop mobile applications for iOS and Android.",
     // link: "/careers-intern/mobile-app",
-  },
+    fullDescription: (
+      <div className="internship-container">
+      <p style={{ color: "white" }}><strong>Company:</strong> LVC Solutions</p>
+      <p style={{ color: "white" }}><strong>Location:</strong> Remote (India)</p>
+      <p style={{ color: "white" }}><strong>Internship Type:</strong> Paid Summer Internship</p>
+      <p style={{ color: "white" }}><strong>Duration:</strong> 12 Weeks</p>
+      <p style={{ color: "white" }}><strong>Start Date:</strong> May / June 2026</p>
+      <p style={{ color: "white" }}><strong>Stipend:</strong> Paid (Monthly)</p>
 
+      <h5 style={{ color: "white" }}>About LVC Solutions</h5>
+      <p style={{ color: "white" }}>
+        LVC Solutions is a technology company building scalable software and AI-driven platforms across
+        recruitment, analytics, and automation. We focus on reliability, performance, and secure
+        deployments to support real-world, production-grade applications.
+      </p>
+
+      <p style={{ color: "white" }}>
+        Our internship program provides hands-on exposure to modern mobile app development by
+        allowing interns to work directly on live applications used by real users.
+      </p>
+
+      <h5 style={{ color: "white" }}>Role Overview</h5>
+      <p style={{ color: "white" }}>
+        As a Mobile App Developer Intern, you will be involved in developing, testing, and maintaining
+        mobile applications for Android and/or iOS platforms. You will work closely with backend
+        developers, UI/UX designers, and product teams to build seamless and high-quality mobile
+        experiences.
+      </p>
+      <p>
+        This is a paid internship designed for students who want practical experience in mobile app
+        development within a real startup environment.
+      </p>
+
+      <h5 style={{ color: "white" }}>Roles and Responsibilities</h5>
+
+      <h5 style={{ color: "white" }}>Mobile App Development</h5>
+      <ul style={{ color: "white" }}>
+        <li>Develop mobile applications using technologies such as React Native, Flutter, or native Android/iOS</li>
+        <li>Implement user interfaces based on UI/UX designs.</li>
+        <li>Ensure smooth performance and responsiveness of mobile applications.</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>API Integration</h5>
+      <ul style={{ color: "white" }}>
+        <li>Integrate mobile applications with backend APIs.</li>
+        <li>Handle data fetching, state management, and API responses.</li>
+        <li>Ensure secure and efficient communication between app and server.</li>
+        <li>Manage authentication and user sessions.</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Performance Optimization</h5>
+      <ul style={{ color: "white" }}>
+        <li>Identify and fix performance bottlenecks.</li>
+        <li>Optimize app speed, responsiveness, and memory usage.</li>
+        <li>Ensure compatibility across different devices and screen sizes.</li>
+        <li>Debug and resolve crashes or runtime issues.</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Testing and Debugging</h5>
+      <ul style={{ color: "white" }}>
+        <li>Perform basic testing of mobile applications.</li>
+        <li>Identify bugs and collaborate with QA teams for fixes.</li>
+        <li>Support app testing across multiple devices and environments.</li>
+        <li>Ensure stable and reliable app performance</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Deployment and Maintenance</h5>
+      <ul style={{ color: "white" }}>
+        <li>Assist in preparing apps for Play Store and App Store submission.</li>
+        <li>Support version updates and release management.</li>
+        <li>Manage app configurations and environment settings</li>
+        <li>Monitor app performance post-deployment</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Collaboration and Documentation</h5>
+      <ul style={{ color: "white" }}>
+        <li>Work closely with backend, UI/UX, and QA teams.</li>
+        <li>Participate in sprint planning and development discussions.</li>
+        <li>Maintain clear documentation for features and implementations</li>
+        <li>Follow Agile development practices</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Eligibility Criteria</h5>
+      <ul style={{ color: "white" }}>
+        <li>B.Tech students from Computer Science, IT, or related branches</li>
+        <li>Eligible years: 2nd year, 3rd year, and final year</li>
+        <li> Interest in mobile app development</li>
+        <li>Ability to commit 40 hours per week during the internship period</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Required Skills</h5>
+      <ul style={{ color: "white" }}>
+        <li> Basic knowledge of mobile app development (Android, iOS, or cross-platform)</li>
+        <li> Familiarity with React Native, Flutter, or similar frameworks</li>
+        <li>Understanding of APIs and JSON data handling</li>
+        <li>Knowledge of JavaScript, Dart, Swift, or Kotlin basics</li>
+        <li>Basic understanding of mobile UI components and layouts</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Preferred (Not Mandatory)</h5>
+      <ul style={{ color: "white" }}>
+        <li>Experience with Firebase or backend integration</li>
+        <li>Knowledge of state management (Redux, Provider, etc.)</li>
+        <li>Exposure to mobile app deployment process</li>
+        <li>Basic understanding of performance optimization techniques</li>
+        <li> Experience working on personal or academic mobile projects</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>What You Will Gain</h5>
+      <ul style={{ color: "white" }}>
+        <li>Paid internship with real mobile app development experience</li>
+        <li>Hands-on exposure to live production mobile applications</li>
+        <li>Mentorship from experienced engineering teams</li>
+        <li>Experience working on real-world user-facing apps</li>
+        <li>Internship certificate and Letter of Recommendation upon successful completion</li>
+        <li> Opportunity for future full-time or extended roles based on business requirements</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Application Process</h5>
+      <ol style={{ color: "white" }}>
+        <li>Online application submission</li>
+        <li>Short technical screening or task</li>
+        <li>Virtual interview</li>
+        <li>Offer confirmation and onboarding</li>
+      </ol>
+    </div>
+    )
+  },
+  {
+    id: 9,
+    title: "QA Engineer Intern",
+    description: "Ensure the quality, reliability, and performance of web applications.",
+    // link: "/careers-intern/qa-engineerasdfas",
+    fullDescription: (
+      <div className="internship-container">
+      <p style={{ color: "white" }}><strong>Company:</strong> LVC Solutions</p>
+      <p style={{ color: "white" }}><strong>Location:</strong> Remote (India)</p>
+      <p style={{ color: "white" }}><strong>Internship Type:</strong> Paid Summer Internship</p>
+      <p style={{ color: "white" }}><strong>Duration:</strong> 8 Weeks</p>
+      <p style={{ color: "white" }}><strong>Start Date:</strong> May / June 2026</p>
+      <p style={{ color: "white" }}><strong>Stipend:</strong> Paid (Monthly)</p>
+
+      <h5 style={{ color: "white" }}>About LVC Solutions</h5>
+      <p style={{ color: "white" }}>
+        LVC Solutions is a technology-driven company building scalable software and AI-powered platforms across recruitment, analytics, and automation. We focus on delivering high-quality, productionready applications that solve real-world problems. Our internship program provides students with practical exposure to industry-standard software development and quality assurance practices by working on live projects.
+      </p>
+
+      <h5 style={{ color: "white" }}>Role Overview</h5>
+      <p style={{ color: "white" }}>
+        As a QA Engineer Intern, you will be responsible for ensuring the quality, reliability, and performance of web applications developed by LVC Solutions. You will work closely with developers, product managers, and designers to identify defects, validate features, and improve overall product quality. This is a paid internship designed for students who want hands-on experience in software testing and quality assurance within a real startup environment.
+      </p>
+
+      <h5 style={{ color: "white" }}>Roles and Responsibilities</h5>
+
+      <h5 style={{ color: "white" }}>Manual Testing</h5>
+      <ul style={{ color: "white" }}>
+        <li>Understand product requirements, workflows, and user stories</li>
+        <li>Create and execute test cases, test scenarios, and test plans</li>
+        <li>Perform functional, regression, integration, and smoke testing</li>
+        <li>Identify, document, and track defects using bug tracking tools</li>
+        <li>Validate fixes and ensure issues are resolved correctly</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Test Analysis and Documentation</h5>
+      <ul style={{ color: "white" }}>
+        <li>Review requirement documents and UI designs to identify test scenarios</li>
+        <li>Prepare detailed test reports and quality metrics</li>
+        <li>Maintain clear and structured test documentation</li>
+        <li>Ensure test coverage for new features and enhancements</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Collaboration and Agile Testing</h5>
+      <ul style={{ color: "white" }}>
+        <li>Work closely with developers to reproduce and resolve defects</li>
+        <li>Participate in sprint planning, stand-ups, and sprint reviews</li>
+        <li>Provide feedback on usability, edge cases, and risk areas</li>
+        <li>Support continuous improvement of QA processes</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Automation Testing (Exposure)</h5>
+      <ul style={{ color: "white" }}>
+        <li>Assist in writing basic automation test scripts (if applicable)</li>
+        <li>Learn and work with automation tools and frameworks</li>
+        <li>Execute automated test cases and analyze results</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Eligibility Criteria</h5>
+      <ul style={{ color: "white" }}>
+        <li>B.Tech students from Computer Science, IT, or related branches</li>
+        <li>Eligible years: 2nd year, 3rd year, and final year students</li>
+        <li>Interest in software testing and quality assurance</li>
+        <li>Ability to understand application workflows and business logic</li>
+        <li>Commitment of 40 hours per week during the internship period</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Required Skills</h5>
+      <ul style={{ color: "white" }}>
+        <li>Basic understanding of software testing concepts and SDLC</li>
+        <li>Knowledge of manual testing techniques</li>
+        <li>Ability to write clear and detailed test cases</li>
+        <li>Familiarity with web applications and APIs</li>
+        <li>Basic knowledge of bug tracking tools</li>
+        <li>Good analytical and communication skills</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Preferred (Not Mandatory)</h5>
+      <ul style={{ color: "white" }}>
+        <li>Exposure to automation tools such as Selenium, Playwright, or Cypress</li>
+        <li>Basic understanding of SQL or database testing</li>
+        <li>Knowledge of Agile or Scrum methodology</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>What You Will Gain</h5>
+      <ul style={{ color: "white" }}>
+        <li>Paid internship with real project testing experience</li>
+        <li>Hands-on exposure to QA processes in a startup environment</li>
+        <li>Experience working on live production applications</li>
+        <li>Mentorship from experienced QA and engineering teams</li>
+        <li>Internship certificate and Letter of Recommendation upon successful completion</li>
+        <li>Opportunity for future full-time or extended roles based on business requirements</li>
+      </ul>
+
+      <h5 style={{ color: "white" }}>Application Process</h5>
+      <ol style={{ color: "white" }}>
+        <li>Online application submission</li>
+        <li>Short screening or testing assignment</li>
+        <li>Virtual interview</li>
+        <li>Offer confirmation and onboarding</li>
+      </ol>
+    </div>
+    )
+  },
+  {
+    id: 10,
+    title: "HR Intern",
+    description: "Support human resources operations, recruitment, and employee engagement.",
+    fullDescription: (
+      <div className="internship-container">
+        <p style={{ color: "white" }}><strong>Company:</strong> LVC Solutions</p>
+        <p style={{ color: "white" }}><strong>Location:</strong> Remote (India)</p>
+        <p style={{ color: "white" }}><strong>Internship Type:</strong> Paid Summer Internship</p>
+        <p style={{ color: "white" }}><strong>Duration:</strong> 12 Weeks</p>
+        <p style={{ color: "white" }}><strong>Start Date:</strong> May / June 2026</p>
+        <p style={{ color: "white" }}><strong>Stipend:</strong> Paid (Monthly)</p>
+
+        <h5 style={{ color: "white" }}>About LVC Solutions</h5>
+        <p style={{ color: "white" }}>
+          LVC Solutions is a technology company building scalable software and AI-powered platforms
+          across recruitment, analytics, and automation. We believe that great teams are the foundation
+          of great products, and our HR function plays a central role in building and sustaining that culture.
+          Our internship program gives students practical exposure to real HR operations within a fast-growing
+          startup environment.
+        </p>
+
+        <h5 style={{ color: "white" }}>Role Overview</h5>
+        <p style={{ color: "white" }}>
+          As an HR Intern, you will support the Human Resources team across recruitment, onboarding,
+          employee engagement, and HR operations. You will gain hands-on experience working with real
+          hiring pipelines, HR documentation, and people management processes within a live startup
+          environment. This is a paid internship designed for students who want practical experience
+          in human resources and people operations.
+        </p>
+
+        <h5 style={{ color: "white" }}>Roles and Responsibilities</h5>
+
+        <h5 style={{ color: "white" }}>Recruitment and Talent Acquisition</h5>
+        <ul style={{ color: "white" }}>
+          <li>Assist in sourcing, screening, and shortlisting candidates for open positions.</li>
+          <li>Coordinate interview schedules and communicate with candidates.</li>
+          <li>Maintain applicant tracking and recruitment data.</li>
+          <li>Support drafting of job descriptions and job postings.</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Onboarding and Offboarding</h5>
+        <ul style={{ color: "white" }}>
+          <li>Assist in preparing onboarding materials and documentation for new hires.</li>
+          <li>Coordinate induction schedules and orientation activities.</li>
+          <li>Support exit processes and documentation when required.</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>HR Operations and Documentation</h5>
+        <ul style={{ color: "white" }}>
+          <li>Maintain and update employee records and HR databases.</li>
+          <li>Assist in drafting HR policies, letters, and internal communications.</li>
+          <li>Support compliance with HR procedures and documentation standards.</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Employee Engagement</h5>
+        <ul style={{ color: "white" }}>
+          <li>Assist in planning and coordinating team engagement activities.</li>
+          <li>Collect and analyze employee feedback surveys.</li>
+          <li>Support initiatives to improve workplace culture and team morale.</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Eligibility Criteria</h5>
+        <ul style={{ color: "white" }}>
+          <li>BBA / MBA (HR) / B.Com / BA or any management-related degree students</li>
+          <li>Eligible years: 2nd year, 3rd year, and final year</li>
+          <li>Strong interest in human resources and people management</li>
+          <li>Ability to commit 40 hours per week during the internship period</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Required Skills</h5>
+        <ul style={{ color: "white" }}>
+          <li>Good verbal and written communication skills</li>
+          <li>Strong interpersonal and organizational skills</li>
+          <li>Ability to maintain confidentiality and professionalism</li>
+          <li>Familiarity with MS Office / Google Workspace tools</li>
+          <li>Basic understanding of HR concepts and processes</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Preferred (Not Mandatory)</h5>
+        <ul style={{ color: "white" }}>
+          <li>Exposure to HR tools or applicant tracking systems</li>
+          <li>Basic knowledge of labor laws and compliance</li>
+          <li>Experience with recruitment platforms such as LinkedIn</li>
+          <li>Understanding of performance management concepts</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>What You Will Gain</h5>
+        <ul style={{ color: "white" }}>
+          <li>Paid internship with real HR and people operations experience</li>
+          <li>Hands-on exposure to live recruitment and onboarding processes</li>
+          <li>Experience working in a fast-growing startup environment</li>
+          <li>Mentorship from experienced HR and leadership professionals</li>
+          <li>Internship certificate and Letter of Recommendation upon successful completion</li>
+          <li>Opportunity for future full-time or extended roles based on business requirements</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Application Process</h5>
+        <ol style={{ color: "white" }}>
+          <li>Online application submission</li>
+          <li>HR screening or short task</li>
+          <li>Virtual interview</li>
+          <li>Offer confirmation and onboarding</li>
+        </ol>
+      </div>
+    )
+  },
+  {
+    id: 11,
+    title: "SAP Intern",
+    description: "Work with SAP ERP modules and support enterprise business process implementations.",
+    fullDescription: (
+      <div className="internship-container">
+        <p style={{ color: "white" }}><strong>Company:</strong> LVC Solutions</p>
+        <p style={{ color: "white" }}><strong>Location:</strong> Remote (India)</p>
+        <p style={{ color: "white" }}><strong>Internship Type:</strong> Paid Summer Internship</p>
+        <p style={{ color: "white" }}><strong>Duration:</strong> 12 Weeks</p>
+        <p style={{ color: "white" }}><strong>Start Date:</strong> May / June 2026</p>
+        <p style={{ color: "white" }}><strong>Stipend:</strong> Paid (Monthly)</p>
+
+        <h5 style={{ color: "white" }}>About LVC Solutions</h5>
+        <p style={{ color: "white" }}>
+          LVC Solutions is a technology company building AI-driven software and enterprise solutions
+          across recruitment, analytics, and business automation. We work with modern enterprise
+          platforms including SAP to streamline business processes and deliver efficient, scalable
+          solutions for our clients and products. Our internship program provides students with practical
+          exposure to real SAP implementations and enterprise software workflows.
+        </p>
+
+        <h5 style={{ color: "white" }}>Role Overview</h5>
+        <p style={{ color: "white" }}>
+          As a SAP Intern, you will support the implementation, configuration, and testing of SAP
+          modules used in business operations. You will work alongside experienced SAP consultants and
+          business analysts to understand enterprise workflows and gain practical experience with SAP
+          ERP systems in a real project environment. This is a paid internship designed for students
+          who want hands-on SAP experience within a technology and consulting environment.
+        </p>
+
+        <h5 style={{ color: "white" }}>Roles and Responsibilities</h5>
+
+        <h5 style={{ color: "white" }}>SAP Module Support</h5>
+        <ul style={{ color: "white" }}>
+          <li>Assist in configuration and setup of SAP modules (SD, MM, FI, HR, or others as applicable).</li>
+          <li>Support business process mapping and documentation within SAP.</li>
+          <li>Participate in SAP data migration and master data management activities.</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Testing and Quality Assurance</h5>
+        <ul style={{ color: "white" }}>
+          <li>Execute unit testing and integration testing for SAP configurations.</li>
+          <li>Document test results and assist in resolving identified issues.</li>
+          <li>Support user acceptance testing (UAT) activities.</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Business Process Analysis</h5>
+        <ul style={{ color: "white" }}>
+          <li>Understand and document current business processes and map them to SAP workflows.</li>
+          <li>Assist in identifying process gaps and propose system-level improvements.</li>
+          <li>Support preparation of functional specifications and process documentation.</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Collaboration and Reporting</h5>
+        <ul style={{ color: "white" }}>
+          <li>Work closely with SAP consultants, functional leads, and business teams.</li>
+          <li>Participate in project meetings, sprint reviews, and status updates.</li>
+          <li>Maintain clear documentation of configurations and testing activities.</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Eligibility Criteria</h5>
+        <ul style={{ color: "white" }}>
+          <li>B.Tech / BCA / MCA / MBA / B.Com students from relevant disciplines</li>
+          <li>Eligible years: 2nd year, 3rd year, and final year</li>
+          <li>Interest in enterprise software, ERP systems, and business processes</li>
+          <li>Ability to commit 40 hours per week during the internship period</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Required Skills</h5>
+        <ul style={{ color: "white" }}>
+          <li>Basic understanding of ERP concepts and business processes</li>
+          <li>Good analytical and problem-solving skills</li>
+          <li>Strong documentation and communication skills</li>
+          <li>Familiarity with MS Office / Google Workspace tools</li>
+          <li>Ability to understand and follow structured workflows</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Preferred (Not Mandatory)</h5>
+        <ul style={{ color: "white" }}>
+          <li>Basic exposure to SAP modules (SD, MM, FI, HCM, or any other)</li>
+          <li>Familiarity with SAP GUI or SAP Fiori</li>
+          <li>Understanding of business process flows in finance, supply chain, or HR</li>
+          <li>Knowledge of SQL or data management basics</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>What You Will Gain</h5>
+        <ul style={{ color: "white" }}>
+          <li>Paid internship with real SAP and ERP project experience</li>
+          <li>Hands-on exposure to enterprise software implementations</li>
+          <li>Experience working in a structured project and consulting environment</li>
+          <li>Mentorship from experienced SAP consultants and business analysts</li>
+          <li>Internship certificate and Letter of Recommendation upon successful completion</li>
+          <li>Opportunity for future full-time or extended roles based on business requirements</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Application Process</h5>
+        <ol style={{ color: "white" }}>
+          <li>Online application submission</li>
+          <li>Technical screening or assignment</li>
+          <li>Virtual interview</li>
+          <li>Offer confirmation and onboarding</li>
+        </ol>
+      </div>
+    )
+  },
+  {
+    id: 12,
+    title: "Salesforce Intern",
+    description: "Build and configure Salesforce CRM solutions to support sales and business operations.",
+    fullDescription: (
+      <div className="internship-container">
+        <p style={{ color: "white" }}><strong>Company:</strong> LVC Solutions</p>
+        <p style={{ color: "white" }}><strong>Location:</strong> Remote (India)</p>
+        <p style={{ color: "white" }}><strong>Internship Type:</strong> Paid Summer Internship</p>
+        <p style={{ color: "white" }}><strong>Duration:</strong> 12 Weeks</p>
+        <p style={{ color: "white" }}><strong>Start Date:</strong> May / June 2026</p>
+        <p style={{ color: "white" }}><strong>Stipend:</strong> Paid (Monthly)</p>
+
+        <h5 style={{ color: "white" }}>About LVC Solutions</h5>
+        <p style={{ color: "white" }}>
+          LVC Solutions is a technology company focused on building AI-powered platforms and business
+          solutions across recruitment, analytics, and CRM automation. We leverage Salesforce to manage
+          client relationships, automate sales workflows, and deliver data-driven business outcomes.
+          Our internship program offers students practical exposure to real Salesforce implementations
+          and CRM development within a live startup environment.
+        </p>
+
+        <h5 style={{ color: "white" }}>Role Overview</h5>
+        <p style={{ color: "white" }}>
+          As a Salesforce Intern, you will support the development, configuration, and administration
+          of Salesforce CRM solutions. You will work with the technical and business teams to build
+          custom features, automate workflows, and optimize Salesforce to meet real business requirements.
+          This is a paid internship designed for students who want hands-on Salesforce experience
+          within a technology startup environment.
+        </p>
+
+        <h5 style={{ color: "white" }}>Roles and Responsibilities</h5>
+
+        <h5 style={{ color: "white" }}>Salesforce Configuration and Development</h5>
+        <ul style={{ color: "white" }}>
+          <li>Assist in configuring Salesforce objects, fields, layouts, and workflows.</li>
+          <li>Support development of custom components using Apex, Visualforce, or Lightning Web Components (LWC).</li>
+          <li>Build and manage automation using Process Builder, Flows, or Workflow Rules.</li>
+          <li>Assist in writing and testing Apex triggers and classes.</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>CRM Administration</h5>
+        <ul style={{ color: "white" }}>
+          <li>Support Salesforce org administration including user management and profiles.</li>
+          <li>Assist in managing security settings, permission sets, and roles.</li>
+          <li>Maintain data quality through imports, deduplication, and validation rules.</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Reporting and Analytics</h5>
+        <ul style={{ color: "white" }}>
+          <li>Create and maintain Salesforce reports and dashboards for business teams.</li>
+          <li>Analyze CRM data to provide actionable insights.</li>
+          <li>Assist in tracking sales pipeline and key performance metrics.</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Integration and Testing</h5>
+        <ul style={{ color: "white" }}>
+          <li>Assist in integrating Salesforce with third-party tools and APIs.</li>
+          <li>Support unit testing and user acceptance testing (UAT) for new features.</li>
+          <li>Document configurations, test cases, and deployment activities.</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Eligibility Criteria</h5>
+        <ul style={{ color: "white" }}>
+          <li>B.Tech / BCA / MCA / MBA students from Computer Science, IT, or related disciplines</li>
+          <li>Eligible years: 2nd year, 3rd year, and final year</li>
+          <li>Strong interest in CRM platforms, cloud technology, and business automation</li>
+          <li>Ability to commit 40 hours per week during the internship period</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Required Skills</h5>
+        <ul style={{ color: "white" }}>
+          <li>Basic understanding of CRM concepts and Salesforce platform</li>
+          <li>Familiarity with JavaScript or any object-oriented programming language</li>
+          <li>Good analytical and problem-solving skills</li>
+          <li>Strong communication and documentation skills</li>
+          <li>Ability to learn new tools and technologies quickly</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Preferred (Not Mandatory)</h5>
+        <ul style={{ color: "white" }}>
+          <li>Exposure to Salesforce Admin or Developer certifications</li>
+          <li>Familiarity with Apex, LWC, or Visualforce</li>
+          <li>Basic understanding of SOQL (Salesforce Object Query Language)</li>
+          <li>Experience with Salesforce Trailhead learning modules</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>What You Will Gain</h5>
+        <ul style={{ color: "white" }}>
+          <li>Paid internship with real Salesforce CRM development experience</li>
+          <li>Hands-on exposure to live Salesforce configurations and automation</li>
+          <li>Experience working on real business workflows and CRM solutions</li>
+          <li>Mentorship from experienced Salesforce developers and consultants</li>
+          <li>Internship certificate and Letter of Recommendation upon successful completion</li>
+          <li>Opportunity for future full-time or extended roles based on business requirements</li>
+        </ul>
+
+        <h5 style={{ color: "white" }}>Application Process</h5>
+        <ol style={{ color: "white" }}>
+          <li>Online application submission</li>
+          <li>Technical screening or assignment</li>
+          <li>Virtual interview</li>
+          <li>Offer confirmation and onboarding</li>
+        </ol>
+      </div>
+    )
+  }
 ];
 
 const CareersIntern = () => {
@@ -856,7 +1520,7 @@ const CareersIntern = () => {
   return (
     <>
     <div style={{ marginTop: "120px", padding: "0 40px 20px 40px" }}>
-      <div className="d-flex gap-4 flex-wrap justify-content-center">
+      <div className="d-flex gap-4 flex-wrap justify-content-start">
         {internshipData.map((item) => (
           <InternshipCard
             key={item.id}

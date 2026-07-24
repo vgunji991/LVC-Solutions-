@@ -6,7 +6,7 @@ import Lvc320CareerProduct from './lvc320CareerProduct'
 
 const Products = () => {
   return (
-    <div>
+    <div className="products-page">
       <FairjobProduct/>
       <LvcSpotlightProduct/>
       <Lvc320CareerProduct/>

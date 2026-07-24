@@ -39,7 +39,7 @@ const Careers = () => {
             <p className="careers-subtitle">Careers</p>
             <hr className="underline" />
             <h1 className="careers-title">Join Our Team</h1>
-            <p className="mb-4" style={{ color: "#f1f1f1" }}>
+            <p className="mb-4 fulltime-heading-text" style={{ color: "#f1f1f1" }}>
               We're building an amazing team of talented individuals. Check back
               soon for exciting career opportunities at LVC Solutions!
             </p>
@@ -801,7 +801,9 @@ const Careers = () => {
           </div>
         </div>
       </div> */}
-      <FullTimeRoles />
+      <div ref={openRolesRef}>
+        <FullTimeRoles />
+      </div>
       <TransformationStartsHere/>
       <Footer />
       <ApplicationForm
