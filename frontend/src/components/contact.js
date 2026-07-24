@@ -238,9 +238,6 @@ const Contact = () => {
     },
   ];
 
-  // Get only Hyderabad office (last one in the array)
-  const hyderabadOffice = offices[offices.length - 1];
-
   return (
     <main>
       <div className="whatwedo-container ">
@@ -404,16 +401,6 @@ const Contact = () => {
               </span>
             </div>
             
-            {/* <iframe
-              title="Hyderabad Office Location"
-              src={`https://maps.google.com/maps?q=${hyderabadOffice.lat},${hyderabadOffice.lng}&z=16&output=embed`}
-              width="100%"
-              height="450"
-              style={{ border: 0, display: "block" }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe> */}
             <iframe
   title="Hyderabad Office Location"
   src={`https://maps.google.com/maps?q=Unit+No+203,+2nd+Floor+Suite+%23749,+SBR+CV+Towers,+Sector-1,+Sy+No+64,+HUDA+Techno+Enclave,+Madhapur,+Hyderabad+-+500081&z=17&output=embed`}
@@ -432,14 +419,6 @@ const Contact = () => {
                 borderTop: "1px solid rgba(255,255,255,0.05)"
               }}
             >
-              {/* <p style={{ color: "#ccc", fontSize: "1rem", margin: 0, lineHeight: "1.8" }}>
-                {hyderabadOffice.lines.map((line, i) => (
-                  <span key={i}>
-                    📍 {line}
-                    {i < hyderabadOffice.lines.length - 1 && <br />}
-                  </span>
-                ))}
-              </p> */}
             </div>
           </div>
         </div>
